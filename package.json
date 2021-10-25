@@ -1,0 +1,15 @@
+{
+  "name": "@codesyntax/volto-listingadvanced-variation",
+  "version": "0.0.1",
+  "description": "volto-listingadvanced-variation: Volto add-on",
+  "main": "src/index.js",
+  "license": "MIT",
+  "keywords": [
+    "volto-addon",
+    "volto-variation",
+    "volto-listing-block",
+    "volto",
+    "plone",
+    "react"
+  ]
+}
