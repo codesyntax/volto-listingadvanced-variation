@@ -17,9 +17,8 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - run: npm install
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm run release
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - run: npm run release
-
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
