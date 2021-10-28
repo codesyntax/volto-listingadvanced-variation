@@ -1,6 +1,6 @@
 {
   "name": "@codesyntax/volto-listingadvanced-variation",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "volto-listingadvanced-variation: Volto add-on",
   "main": "src/index.js",
   "license": "MIT",
@@ -11,5 +11,23 @@
     "volto",
     "plone",
     "react"
-  ]
+  ],
+  "scripts": {
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/codesyntax/volto-listingadvanced-variation.git"
+  },
+  "dependencies": {
+    "release-it": "^14.11.6"
+  },
+  "bugs": {
+    "url": "https://github.com/codesyntax/volto-listingadvanced-variation/issues"
+  },
+  "homepage": "https://github.com/codesyntax/volto-listingadvanced-variation#readme",
+  "author": "Ion Lizarazu <ilizarazu@codesyntax.com>",
+  "publishConfig": {
+    "access": "public"
+  }
 }
