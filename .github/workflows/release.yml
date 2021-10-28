@@ -1,6 +1,13 @@
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v2
         with:
@@ -10,18 +17,8 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - run: npm install
-      - run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  deploy:
-    script:
-      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-      - npm run release
-
-on:
-  pull_request:
-    branches:
-      - main
-    steps:
-      - release
-      - deploy
+      - run: npm run release
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run: npm run release
