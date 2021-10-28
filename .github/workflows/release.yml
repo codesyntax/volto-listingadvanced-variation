@@ -1,18 +1,19 @@
-name: Node.js Package
-on:
-  release:
-    types: [created]
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v2
         with:
-          node-version: "12.x"
-          registry-url: "https://registry.npmjs.org"
+          fetch-depth: 0
+      - name: git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - run: npm install
-      - run: npm publish
+      - run: npm run release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  deploy:
+    script:
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - npm run release
