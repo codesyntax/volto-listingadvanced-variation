@@ -1,6 +1,6 @@
 {
   "name": "@codesyntax/volto-listingadvanced-variation",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "volto-listingadvanced-variation: Volto add-on",
   "main": "src/index.js",
   "license": "MIT",
@@ -18,5 +18,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:codesyntax/volto-listingadvanced-variation"
+  },
+  "dependencies": {
+    "release-it": "^14.11.6"
   }
 }
