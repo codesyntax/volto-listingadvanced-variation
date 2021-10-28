@@ -13,7 +13,20 @@ jobs:
       - run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    push:
+      branches:
+        - main
+    pull_request:
+      branches:
+        - main
   deploy:
     script:
       - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - npm run release
+
+    push:
+      branches:
+        - main
+    pull_request:
+      branches:
+        - main
