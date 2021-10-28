@@ -6,7 +6,7 @@
     "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs",
     "tagName": "${version}",
     "commitMessage": "Automated release ${version}",
-    "requireBranch": "develop",
+    "requireBranch": "master",
     "requireCleanWorkingDir": false,
     "git.requireCommits": true
   },
