@@ -26,5 +26,8 @@
     "url": "https://github.com/codesyntax/volto-listingadvanced-variation/issues"
   },
   "homepage": "https://github.com/codesyntax/volto-listingadvanced-variation#readme",
-  "author": "Ion Lizarazu <ilizarazu@codesyntax.com>"
+  "author": "Ion Lizarazu <ilizarazu@codesyntax.com>",
+  "publishConfig": {
+    "access": "public"
+  }
 }
