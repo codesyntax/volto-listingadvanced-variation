@@ -11,5 +11,12 @@
     "volto",
     "plone",
     "react"
-  ]
+  ],
+  "scripts": {
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:codesyntax/volto-listingadvanced-variation"
+  }
 }
