@@ -2,8 +2,8 @@ import React from 'react';
 import messages from './messages';
 
 export const advancedSchema = (props) => {
-  const { intl, schema } = props;
-
+  const { intl, schema, formData } = props;
+  const imageWidth = ['right', 'left'].includes(formData.imageSide) ? ['imageWidth'] : [];
   return {
     ...schema,
     fieldsets: [
@@ -25,12 +25,17 @@ export const advancedSchema = (props) => {
       {
         id: 'image',
         title: intl.formatMessage(messages.imageConfiguration),
-        fields: ['imageSide', 'imageWidth'],
+        fields: ['imageSide', ...imageWidth],
       },
       {
         id: 'title',
         title: intl.formatMessage(messages.titleConfiguration),
         fields: ['titleTag'],
+      },
+      {
+        id: 'date',
+        title: intl.formatMessage(messages.dateConfiguration),
+        fields: ['effectiveDate'],
       },
     ],
     properties: {
@@ -64,8 +69,11 @@ export const advancedSchema = (props) => {
         ),
         choices: [
           [null, 'No image'],
-          ['right', 'right'],
+          ['up', 'up'],
           ['left', 'left'],
+          ['right', 'right'],
+          ['down', 'down'],
+
         ],
       },
       titleTag: {
@@ -78,6 +86,13 @@ export const advancedSchema = (props) => {
           [(children) => <h3>{children}</h3>, 'H3'],
           [(children) => <h4>{children}</h4>, 'H4'],
         ],
+      },
+      effectiveDate: {
+        title: intl.formatMessage(messages.dateConfiguration),
+        description: intl.formatMessage(
+          messages.dateConfigurationDescription,
+        ),
+        type: 'boolean'
       },
     },
   };

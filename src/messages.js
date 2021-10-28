@@ -44,6 +44,14 @@ const messages = defineMessages({
     id: 'Default HTML tag will be H3',
     defaultMessage: 'Default HTML tag will be H3',
   },
+  dateConfiguration: {
+    id: 'effectiveDate',
+    defaultMessage: 'effectiveDate',
+  },
+  dateConfigurationDescription: {
+    id: 'Show effectiveDate',
+    defaultMessage: 'Show effectiveDate',
+  },
 });
 
 export default messages;
