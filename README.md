@@ -24,7 +24,7 @@ Installation:
 
 ```javascript
   "addons": [
-    "volto-form-block"
+    "@codesyntax/volto-listingadvanced-variation"
   ],
 ```
 
