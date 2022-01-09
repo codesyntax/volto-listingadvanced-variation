@@ -19,6 +19,7 @@ const AdvancedListingBlockTemplate = ({
   howManyColumns,
   effectiveDate,
   titleTag,
+  showDescription,
 }) => {
   let link = null;
   let href = linkHref?.[0]?.['@id'] || '';
@@ -36,15 +37,19 @@ const AdvancedListingBlockTemplate = ({
   const hasImage = imageSide !== null;
   const oneColumnElement = ['up', 'down', null].includes(imageSide);
   const columnSize = oneColumnElement ? 1 : 2;
-  const imageGridWidth = oneColumnElement ? 12 : (imageWidth ? imageWidth : 2);
-  const contentGridWidth = oneColumnElement ? 12 : (hasImage ? 12 - imageWidth : 12);
+  const imageGridWidth = oneColumnElement ? 12 : imageWidth ? imageWidth : 2;
+  const contentGridWidth = oneColumnElement
+    ? 12
+    : hasImage
+    ? 12 - imageWidth
+    : 12;
   const intl = useIntl();
   moment.locale(intl.locale);
   return (
     <>
       <Grid columns={howManyColumns ? howManyColumns : 1} stretched>
         {items.map((item) => (
-          < Grid.Column key={item['@id']} >
+          <Grid.Column key={item['@id']}>
             <ConditionalLink item={item} condition={!isEditMode}>
               <Grid columns={columnSize}>
                 {['up', 'left'].includes(imageSide) && (
@@ -74,10 +79,10 @@ const AdvancedListingBlockTemplate = ({
                   ) : (
                     <h3>{item.title ? item.title : item.id}</h3>
                   )}
-                  {effectiveDate &&
-                    <p>{moment(item.effective).format("L")}</p>
-                  }
-                  <p>{item.description}</p>
+                  {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
+                  {showDescription && item.description && (
+                    <p>{item.description}</p>
+                  )}
                 </Grid.Column>
                 {['right', 'down'].includes(imageSide) && (
                   <Grid.Column width={imageGridWidth}>

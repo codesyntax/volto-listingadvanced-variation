@@ -44,6 +44,19 @@ const messages = defineMessages({
     id: 'Default HTML tag will be H3',
     defaultMessage: 'Default HTML tag will be H3',
   },
+  descriptionConfiguration: {
+    id: 'description',
+    defaultMessage: 'Description',
+  },
+  descriptionConfigurationTitle: {
+    id: 'descriptionConfigurationTitle',
+    defaultMessage: 'Show the description?',
+  },
+  descriptionConfigurationDescription: {
+    id: 'descriptionConfigurationDescription',
+    defaultMessage: 'If selected, the description will be shown',
+  },
+
   dateConfiguration: {
     id: 'effectiveDate',
     defaultMessage: 'effectiveDate',
