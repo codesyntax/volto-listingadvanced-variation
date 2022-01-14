@@ -41,13 +41,13 @@ const AdvancedListingBlockTemplate = ({
   const contentGridWidth = oneColumnElement
     ? 12
     : hasImage
-    ? 12 - imageWidth
-    : 12;
+      ? 12 - imageWidth
+      : 12;
   const intl = useIntl();
   moment.locale(intl.locale);
   return (
     <>
-      <Grid columns={howManyColumns ? howManyColumns : 1} stretched>
+      <Grid columns={howManyColumns ? howManyColumns : 1} stackable>
         {items.map((item) => (
           <Grid.Column key={item['@id']}>
             <ConditionalLink item={item} condition={!isEditMode}>
@@ -64,7 +64,7 @@ const AdvancedListingBlockTemplate = ({
                     {item[settings.listingPreviewImageField] && (
                       <Image
                         src={flattenToAppURL(
-                          item[settings.listingPreviewImageField].scales.preview
+                          item[settings.listingPreviewImageField].scales.large
                             .download,
                         )}
                         alt={item.title}
@@ -96,7 +96,7 @@ const AdvancedListingBlockTemplate = ({
                     {item[settings.listingPreviewImageField] && (
                       <Image
                         src={flattenToAppURL(
-                          item[settings.listingPreviewImageField].scales.preview
+                          item[settings.listingPreviewImageField].scales.large
                             .download,
                         )}
                         alt={item.title}
