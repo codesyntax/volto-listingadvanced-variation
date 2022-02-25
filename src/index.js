@@ -9,7 +9,6 @@ const applyConfig = (config) => {
       title: 'Advanced',
       template: AdvancedListingBlockTemplate,
       schemaEnhancer: advancedSchema,
-      fullobjects: true,
     },
   ];
   return config;

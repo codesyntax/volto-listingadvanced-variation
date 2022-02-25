@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ConditionalLink } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import config from '@plone/volto/registry';
 
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
@@ -33,7 +32,6 @@ const AdvancedListingBlockTemplate = ({
     link = <a href={href}>{linkTitle || href}</a>;
   }
 
-  const { settings } = config;
   const hasImage = imageSide !== null;
   const oneColumnElement = ['up', 'down', null].includes(imageSide);
   const columnSize = oneColumnElement ? 1 : 2;
@@ -41,8 +39,8 @@ const AdvancedListingBlockTemplate = ({
   const contentGridWidth = oneColumnElement
     ? 12
     : hasImage
-      ? 12 - imageWidth
-      : 12;
+    ? 12 - imageWidth
+    : 12;
   const intl = useIntl();
   moment.locale(intl.locale);
   return (
@@ -54,18 +52,17 @@ const AdvancedListingBlockTemplate = ({
               <Grid columns={columnSize}>
                 {['up', 'left'].includes(imageSide) && (
                   <Grid.Column width={imageGridWidth}>
-                    {!item[settings.listingPreviewImageField] && (
+                    {!item.image_field && (
                       <Image
                         src={DefaultImageSVG}
                         alt="This content has no image, this is a default placeholder."
                         size="small"
                       />
                     )}
-                    {item[settings.listingPreviewImageField] && (
+                    {item.image_field && (
                       <Image
                         src={flattenToAppURL(
-                          item[settings.listingPreviewImageField].scales.large
-                            .download,
+                          `${item['@id']}/@@images/${item.image_field}/large`,
                         )}
                         alt={item.title}
                         size="small"
@@ -86,18 +83,17 @@ const AdvancedListingBlockTemplate = ({
                 </Grid.Column>
                 {['right', 'down'].includes(imageSide) && (
                   <Grid.Column width={imageGridWidth}>
-                    {!item[settings.listingPreviewImageField] && (
+                    {!item.image_field && (
                       <Image
                         src={DefaultImageSVG}
                         alt="This content has no image, this is a default placeholder."
                         size="small"
                       />
                     )}
-                    {item[settings.listingPreviewImageField] && (
+                    {item.image_field && (
                       <Image
                         src={flattenToAppURL(
-                          item[settings.listingPreviewImageField].scales.large
-                            .download,
+                          `${item['@id']}/@@images/${item.image_field}/large`,
                         )}
                         alt={item.title}
                         size="small"
