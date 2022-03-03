@@ -63,7 +63,7 @@ const AdvancedListingBlockTemplate = ({
   return (
     <>
       <HeaderTag className="listing-header">
-        {headerUrl ? headerLink : header}
+        {headerLink ? headerLink : header}
       </HeaderTag>
       <Grid columns={howManyColumns ? howManyColumns : 1} stackable>
         {items.map((item) => (
