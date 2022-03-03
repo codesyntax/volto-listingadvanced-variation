@@ -10,8 +10,11 @@ import moment from 'moment';
 import { useIntl } from 'react-intl';
 const AdvancedListingBlockTemplate = ({
   items,
-  linkTitle,
-  linkHref,
+  moreLinkText,
+  moreLinkUrl,
+  header,
+  headerUrl,
+  headerTag,
   isEditMode,
   imageSide,
   imageWidth,
@@ -20,16 +23,28 @@ const AdvancedListingBlockTemplate = ({
   titleTag,
   showDescription,
 }) => {
-  let link = null;
-  let href = linkHref?.[0]?.['@id'] || '';
-  if (isInternalURL(href)) {
-    link = (
-      <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
-        {linkTitle || href}
+  let moreLink = null;
+  let moreHref = moreLinkUrl?.[0]?.['@id'] || '';
+  if (isInternalURL(moreHref)) {
+    moreLink = (
+      <ConditionalLink to={flattenToAppURL(moreHref)} condition={!isEditMode}>
+        {moreLinkText || moreHref}
       </ConditionalLink>
     );
-  } else if (href) {
-    link = <a href={href}>{linkTitle || href}</a>;
+  } else if (moreHref) {
+    moreLink = <a href={moreHref}>{moreLinkText || moreHref}</a>;
+  }
+
+  let headerLink = null;
+  let headerHref = headerUrl?.[0]?.['@id'] || '';
+  if (isInternalURL(headerHref)) {
+    headerLink = (
+      <ConditionalLink to={flattenToAppURL(headerHref)} condition={!isEditMode}>
+        {header || headerHref}
+      </ConditionalLink>
+    );
+  } else if (headerHref) {
+    moreLink = <a href={headerHref}>{moreLinkText || headerHref}</a>;
   }
 
   const hasImage = imageSide !== null;
@@ -42,24 +57,31 @@ const AdvancedListingBlockTemplate = ({
     ? 12 - imageWidth
     : 12;
   const intl = useIntl();
+  const TitleTag = titleTag ? titleTag : 'h3';
+  const HeaderTag = headerTag ? headerTag : 'h3';
   moment.locale(intl.locale);
   return (
     <>
+      <HeaderTag className="listing-header">
+        {headerUrl ? headerLink : header}
+      </HeaderTag>
       <Grid columns={howManyColumns ? howManyColumns : 1} stackable>
         {items.map((item) => (
           <Grid.Column key={item['@id']}>
-            <ConditionalLink item={item} condition={!isEditMode}>
-              <Grid columns={columnSize}>
-                {['up', 'left'].includes(imageSide) && (
-                  <Grid.Column width={imageGridWidth}>
-                    {!item.image_field && (
+            <Grid columns={columnSize}>
+              {['up', 'left'].includes(imageSide) && (
+                <Grid.Column width={imageGridWidth}>
+                  {!item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
                         src={DefaultImageSVG}
                         alt="This content has no image, this is a default placeholder."
                         size="small"
                       />
-                    )}
-                    {item.image_field && (
+                    </ConditionalLink>
+                  )}
+                  {item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
                         src={flattenToAppURL(
                           `${item['@id']}/@@images/${item.image_field}/large`,
@@ -67,30 +89,34 @@ const AdvancedListingBlockTemplate = ({
                         alt={item.title}
                         size="small"
                       />
-                    )}
-                  </Grid.Column>
-                )}
-                <Grid.Column width={contentGridWidth}>
-                  {titleTag ? (
-                    titleTag(item.title ? item.title : item.id)
-                  ) : (
-                    <h3>{item.title ? item.title : item.id}</h3>
-                  )}
-                  {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
-                  {showDescription && item.description && (
-                    <p>{item.description}</p>
+                    </ConditionalLink>
                   )}
                 </Grid.Column>
-                {['right', 'down'].includes(imageSide) && (
-                  <Grid.Column width={imageGridWidth}>
-                    {!item.image_field && (
+              )}
+              <Grid.Column width={contentGridWidth}>
+                <TitleTag>
+                  <ConditionalLink item={item} condition={!isEditMode}>
+                    {item.title ? item.title : item.id}
+                  </ConditionalLink>
+                </TitleTag>
+                {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
+                {showDescription && item.description && (
+                  <p>{item.description}</p>
+                )}
+              </Grid.Column>
+              {['right', 'down'].includes(imageSide) && (
+                <Grid.Column width={imageGridWidth}>
+                  {!item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
                         src={DefaultImageSVG}
                         alt="This content has no image, this is a default placeholder."
                         size="small"
                       />
-                    )}
-                    {item.image_field && (
+                    </ConditionalLink>
+                  )}
+                  {item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
                         src={flattenToAppURL(
                           `${item['@id']}/@@images/${item.image_field}/large`,
@@ -98,15 +124,15 @@ const AdvancedListingBlockTemplate = ({
                         alt={item.title}
                         size="small"
                       />
-                    )}
-                  </Grid.Column>
-                )}
-              </Grid>
-            </ConditionalLink>
+                    </ConditionalLink>
+                  )}
+                </Grid.Column>
+              )}
+            </Grid>
           </Grid.Column>
         ))}
       </Grid>
-      {link && <div className="footer">{link}</div>}
+      {moreLink && <div className="listing-footer">{moreLink}</div>}
     </>
   );
 };

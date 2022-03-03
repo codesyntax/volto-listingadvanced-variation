@@ -4,11 +4,39 @@ const messages = defineMessages({
     id: 'Query',
     defaultMessage: 'Query',
   },
+  headerConfiguration: {
+    id: 'Header',
+    defaultMessage: 'Header',
+  },
+  header: {
+    id: 'Header text',
+    defaultMessage: 'Header text',
+  },
+  headerDescription: {
+    id: 'Header description',
+    defaultMessage: 'Block header text',
+  },
+  headerUrl: {
+    id: 'Header url',
+    defaultMessage: 'Header url or object',
+  },
+  headerUrlDescription: {
+    id: 'Header url description',
+    defaultMessage: 'Paste an external link or a plone object',
+  },
+  headerTag: {
+    id: 'Header Tag',
+    defaultMessage: 'Header Tag',
+  },
+  headerTagDescription: {
+    id: 'Header Tag description',
+    defaultMessage: 'Default HTML tag will be H3',
+  },
   columnsConfiguration: {
     id: 'Columns configuration',
-    defaultMessage: 'Columns configuration',
+    defaultMessage: 'Columns',
   },
-  columnsCountConfiguration: {
+  columnsCount: {
     id: 'How many columns:',
     defaultMessage: 'How many columns:',
   },
@@ -16,31 +44,31 @@ const messages = defineMessages({
     id: 'Image position/size',
     defaultMessage: 'Image position/size',
   },
-  imageWidthConfiguration: {
+  imageWidth: {
     id: 'Image width (x/12):',
     defaultMessage: 'Image width (x/12):',
   },
-  imageWidthConfigurationDescription: {
+  imageWidthDescription: {
     id: 'Default image width will be 2/12',
     defaultMessage: 'Default image width will be 2/12',
   },
-  imagePositionConfiguration: {
+  imagePosition: {
     id: 'Image position:',
     defaultMessage: 'Image position:',
   },
-  imagePositionConfigurationDescription: {
+  imagePositionDescription: {
     id: 'Default with no image',
     defaultMessage: 'Default with no image',
   },
   titleConfiguration: {
     id: 'Title configuration',
-    defaultMessage: 'Title configuration',
+    defaultMessage: 'Title',
   },
-  titleTagConfiguration: {
+  titleTag: {
     id: 'Title text HTML tag',
     defaultMessage: 'Title text HTML tag',
   },
-  titleTagConfigurationDescription: {
+  titleTagDescription: {
     id: 'Default HTML tag will be H3',
     defaultMessage: 'Default HTML tag will be H3',
   },
@@ -48,22 +76,45 @@ const messages = defineMessages({
     id: 'description',
     defaultMessage: 'Description',
   },
-  descriptionConfigurationTitle: {
-    id: 'descriptionConfigurationTitle',
+  descriptionTitle: {
+    id: 'descriptionTitle',
     defaultMessage: 'Show the description?',
   },
-  descriptionConfigurationDescription: {
-    id: 'descriptionConfigurationDescription',
+  descriptionDescription: {
+    id: 'descriptionDescription',
     defaultMessage: 'If selected, the description will be shown',
   },
-
   dateConfiguration: {
     id: 'effectiveDate',
-    defaultMessage: 'effectiveDate',
+    defaultMessage: 'Effective date',
   },
-  dateConfigurationDescription: {
+  date: {
+    id: 'effectiveDate',
+    defaultMessage: 'Effective date',
+  },
+  dateDescription: {
     id: 'Show effectiveDate',
     defaultMessage: 'Show effectiveDate',
+  },
+  moreLinkConfiguration: {
+    id: 'moreLinkConfiguration',
+    defaultMessage: 'More link',
+  },
+  moreLinkText: {
+    id: 'moreLinkText',
+    defaultMessage: 'Text',
+  },
+  moreLinkTextDescription: {
+    id: 'moreLinkTextDescription',
+    defaultMessage: 'More link text',
+  },
+  moreLinkUrl: {
+    id: 'moreLinkUrl',
+    defaultMessage: 'More link url or object',
+  },
+  moreLinkUrlDescription: {
+    id: 'moreLinkUrlDescription',
+    defaultMessage: 'Paste an external link or a plone object',
   },
 });
 
