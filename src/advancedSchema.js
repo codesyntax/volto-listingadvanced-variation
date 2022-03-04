@@ -1,4 +1,3 @@
-import React from 'react';
 import messages from './messages';
 
 export const advancedSchema = (props) => {
