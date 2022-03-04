@@ -66,7 +66,7 @@ const messages = defineMessages({
   },
   titleTag: {
     id: 'Title text HTML tag',
-    defaultMessage: 'Title text HTML tag',
+    defaultMessage: 'HTML tag',
   },
   titleTagDescription: {
     id: 'Default HTML tag will be H3',
