@@ -1,0 +1,152 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: messages
+# defaultMessage: Columns
+msgid "Columns configuration"
+msgstr ""
+
+#: messages
+# defaultMessage: Default HTML tag will be H3
+msgid "Default HTML tag will be H3"
+msgstr ""
+
+#: messages
+# defaultMessage: Default image width will be 2/12
+msgid "Default image width will be 2/12"
+msgstr ""
+
+#: messages
+# defaultMessage: Default with no image
+msgid "Default with no image"
+msgstr ""
+
+#: messages
+# defaultMessage: Header
+msgid "Header"
+msgstr ""
+
+#: messages
+# defaultMessage: Header Tag
+msgid "Header Tag"
+msgstr ""
+
+#: messages
+# defaultMessage: Default HTML tag will be H3
+msgid "Header Tag description"
+msgstr ""
+
+#: messages
+# defaultMessage: Block header text
+msgid "Header description"
+msgstr ""
+
+#: messages
+# defaultMessage: Header text
+msgid "Header text"
+msgstr ""
+
+#: messages
+# defaultMessage: Header url or object
+msgid "Header url"
+msgstr ""
+
+#: messages
+# defaultMessage: Paste an external link or a plone object
+msgid "Header url description"
+msgstr ""
+
+#: messages
+# defaultMessage: How many columns:
+msgid "How many columns:"
+msgstr ""
+
+#: messages
+# defaultMessage: Image position/size
+msgid "Image position/size"
+msgstr ""
+
+#: messages
+# defaultMessage: Image position:
+msgid "Image position:"
+msgstr ""
+
+#: messages
+# defaultMessage: Image width (x/12):
+msgid "Image width (x/12):"
+msgstr ""
+
+#: messages
+# defaultMessage: Query
+msgid "Query"
+msgstr ""
+
+#: messages
+# defaultMessage: Show effectiveDate
+msgid "Show effectiveDate"
+msgstr ""
+
+#: messages
+# defaultMessage: Title
+msgid "Title configuration"
+msgstr ""
+
+#: messages
+# defaultMessage: HTML tag
+msgid "Title text HTML tag"
+msgstr ""
+
+#: messages
+# defaultMessage: Description
+msgid "description"
+msgstr ""
+
+#: messages
+# defaultMessage: If selected, the description will be shown
+msgid "descriptionDescription"
+msgstr ""
+
+#: messages
+# defaultMessage: Show the description?
+msgid "descriptionTitle"
+msgstr ""
+
+#: messages
+# defaultMessage: Effective date
+msgid "effectiveDate"
+msgstr ""
+
+#: messages
+# defaultMessage: More link
+msgid "moreLinkConfiguration"
+msgstr ""
+
+#: messages
+# defaultMessage: Text
+msgid "moreLinkText"
+msgstr ""
+
+#: messages
+# defaultMessage: More link text
+msgid "moreLinkTextDescription"
+msgstr ""
+
+#: messages
+# defaultMessage: More link url or object
+msgid "moreLinkUrl"
+msgstr ""
+
+#: messages
+# defaultMessage: Paste an external link or a plone object
+msgid "moreLinkUrlDescription"
+msgstr ""

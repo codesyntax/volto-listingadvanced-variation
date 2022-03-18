@@ -13,14 +13,16 @@
     "react"
   ],
   "scripts": {
-    "release": "release-it"
+    "release": "release-it",
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/codesyntax/volto-listingadvanced-variation.git"
   },
   "dependencies": {
-    "release-it": "^14.11.6"
+    "release-it": "^14.11.6",
+    "@plone/scripts": "*"
   },
   "bugs": {
     "url": "https://github.com/codesyntax/volto-listingadvanced-variation/issues"

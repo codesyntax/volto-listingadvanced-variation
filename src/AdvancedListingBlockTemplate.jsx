@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ConditionalLink } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import config from '@plone/volto/registry';
 
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
@@ -11,101 +10,129 @@ import moment from 'moment';
 import { useIntl } from 'react-intl';
 const AdvancedListingBlockTemplate = ({
   items,
-  linkTitle,
-  linkHref,
+  moreLinkText,
+  moreLinkUrl,
+  header,
+  headerUrl,
+  headerTag,
   isEditMode,
   imageSide,
   imageWidth,
   howManyColumns,
   effectiveDate,
   titleTag,
+  showDescription,
 }) => {
-  let link = null;
-  let href = linkHref?.[0]?.['@id'] || '';
-  if (isInternalURL(href)) {
-    link = (
-      <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
-        {linkTitle || href}
+  let moreLink = null;
+  let moreHref = moreLinkUrl?.[0]?.['@id'] || '';
+  if (isInternalURL(moreHref)) {
+    moreLink = (
+      <ConditionalLink to={flattenToAppURL(moreHref)} condition={!isEditMode}>
+        {moreLinkText || moreHref}
       </ConditionalLink>
     );
-  } else if (href) {
-    link = <a href={href}>{linkTitle || href}</a>;
+  } else if (moreHref) {
+    moreLink = <a href={moreHref}>{moreLinkText || moreHref}</a>;
   }
 
-  const { settings } = config;
+  let headerLink = null;
+  let headerHref = headerUrl?.[0]?.['@id'] || '';
+  if (isInternalURL(headerHref)) {
+    headerLink = (
+      <ConditionalLink to={flattenToAppURL(headerHref)} condition={!isEditMode}>
+        {header || headerHref}
+      </ConditionalLink>
+    );
+  } else if (headerHref) {
+    moreLink = <a href={headerHref}>{moreLinkText || headerHref}</a>;
+  }
+
   const hasImage = imageSide !== null;
   const oneColumnElement = ['up', 'down', null].includes(imageSide);
   const columnSize = oneColumnElement ? 1 : 2;
-  const imageGridWidth = oneColumnElement ? 12 : (imageWidth ? imageWidth : 2);
-  const contentGridWidth = oneColumnElement ? 12 : (hasImage ? 12 - imageWidth : 12);
+  const imageGridWidth = oneColumnElement ? 12 : imageWidth ? imageWidth : 2;
+  const contentGridWidth = oneColumnElement
+    ? 12
+    : hasImage
+    ? 12 - imageWidth
+    : 12;
   const intl = useIntl();
+  const TitleTag = titleTag ? titleTag : 'h3';
+  const HeaderTag = headerTag ? headerTag : 'h3';
   moment.locale(intl.locale);
   return (
     <>
-      <Grid columns={howManyColumns ? howManyColumns : 1} stretched>
+      <HeaderTag className="listing-header">
+        {headerLink ? headerLink : header}
+      </HeaderTag>
+      <Grid columns={howManyColumns ? howManyColumns : 1} stackable>
         {items.map((item) => (
-          < Grid.Column key={item['@id']} >
-            <ConditionalLink item={item} condition={!isEditMode}>
-              <Grid columns={columnSize}>
-                {['up', 'left'].includes(imageSide) && (
-                  <Grid.Column width={imageGridWidth}>
-                    {!item[settings.listingPreviewImageField] && (
+          <Grid.Column key={item['@id']}>
+            <Grid columns={columnSize}>
+              {['up', 'left'].includes(imageSide) && (
+                <Grid.Column width={imageGridWidth}>
+                  {!item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
                         src={DefaultImageSVG}
                         alt="This content has no image, this is a default placeholder."
                         size="small"
                       />
-                    )}
-                    {item[settings.listingPreviewImageField] && (
-                      <Image
-                        src={flattenToAppURL(
-                          item[settings.listingPreviewImageField].scales.preview
-                            .download,
-                        )}
-                        alt={item.title}
-                        size="small"
-                      />
-                    )}
-                  </Grid.Column>
-                )}
-                <Grid.Column width={contentGridWidth}>
-                  {titleTag ? (
-                    titleTag(item.title ? item.title : item.id)
-                  ) : (
-                    <h3>{item.title ? item.title : item.id}</h3>
+                    </ConditionalLink>
                   )}
-                  {effectiveDate &&
-                    <p>{moment(item.effective).format("L")}</p>
-                  }
-                  <p>{item.description}</p>
+                  {item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
+                      <Image
+                        src={flattenToAppURL(
+                          `${item['@id']}/@@images/${item.image_field}/large`,
+                        )}
+                        alt={item.title}
+                        size="small"
+                      />
+                    </ConditionalLink>
+                  )}
                 </Grid.Column>
-                {['right', 'down'].includes(imageSide) && (
-                  <Grid.Column width={imageGridWidth}>
-                    {!item[settings.listingPreviewImageField] && (
+              )}
+              <Grid.Column width={contentGridWidth}>
+                <TitleTag>
+                  <ConditionalLink item={item} condition={!isEditMode}>
+                    {item.title ? item.title : item.id}
+                  </ConditionalLink>
+                </TitleTag>
+                {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
+                {showDescription && item.description && (
+                  <p>{item.description}</p>
+                )}
+              </Grid.Column>
+              {['right', 'down'].includes(imageSide) && (
+                <Grid.Column width={imageGridWidth}>
+                  {!item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
                         src={DefaultImageSVG}
                         alt="This content has no image, this is a default placeholder."
                         size="small"
                       />
-                    )}
-                    {item[settings.listingPreviewImageField] && (
+                    </ConditionalLink>
+                  )}
+                  {item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
                         src={flattenToAppURL(
-                          item[settings.listingPreviewImageField].scales.preview
-                            .download,
+                          `${item['@id']}/@@images/${item.image_field}/large`,
                         )}
                         alt={item.title}
                         size="small"
                       />
-                    )}
-                  </Grid.Column>
-                )}
-              </Grid>
-            </ConditionalLink>
+                    </ConditionalLink>
+                  )}
+                </Grid.Column>
+              )}
+            </Grid>
           </Grid.Column>
         ))}
       </Grid>
-      {link && <div className="footer">{link}</div>}
+      {moreLink && <div className="listing-footer">{moreLink}</div>}
     </>
   );
 };
