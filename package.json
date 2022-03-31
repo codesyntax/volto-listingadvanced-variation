@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "release": "release-it",
-    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon",
+    "storybook": "start-storybook -p 6006"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,12 @@
   "dependencies": {
     "release-it": "^14.11.6",
     "@plone/scripts": "*"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/addon-links": "^6.4.18",
+    "@storybook/react": "^6.4.18"
   },
   "bugs": {
     "url": "https://github.com/codesyntax/volto-listingadvanced-variation/issues"
