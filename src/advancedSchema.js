@@ -20,16 +20,16 @@ export const advancedSchema = (props) => {
           },
         ]
       : [];
+  const include_fieldsets = ['default', 'searchquery', 'facets', 'controls'];
 
   return {
     ...schema,
     fieldsets: [
       ...(schema.fieldsets &&
         schema.fieldsets.length > 0 &&
-        schema.fieldsets.filter((fieldset) => fieldset.id === 'default')),
-      ...(schema.fieldsets &&
-        schema.fieldsets.length > 0 &&
-        schema.fieldsets.filter((fieldset) => fieldset.id === 'searchquery')),
+        schema.fieldsets.filter((fieldset) =>
+          include_fieldsets.includes(fieldset.id),
+        )),
       ...heading,
       {
         id: 'columns',
