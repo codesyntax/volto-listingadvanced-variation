@@ -2,9 +2,9 @@ import messages from './messages';
 
 export const advancedSchema = (props) => {
   const {intl, schema, formData} = props;
-  const imageWidth = ['right', 'left'].includes(formData.imageSide)
-    ? ['imageWidth']
-    : [];
+  // const imageWidth = ['right', 'left'].includes(formData.imageSide)
+  //   ? ['imageWidth']
+  //   : [];
   const headingChoices = [
     ['h2', 'H2'],
     ['h3', 'H3'],
@@ -13,20 +13,21 @@ export const advancedSchema = (props) => {
   return {
     ...schema,
     fieldsets: [
-      {
-        id: 'default',
-        title: 'Default',
-        fields: ['variation','headline','headlineTag'],
-      },
-      {
-        id: 'querystring',
-        title: intl.formatMessage(messages.querystring),
-        fields: ['querystring'],
-      },
+      ...schema.fieldsets,
+      // {
+      //   id: 'default',
+      //   title: 'Default',
+      //   fields: ['variation', 'headline', 'headlineTag'],
+      // },
+      // {
+      //   id: 'querystring',
+      //   title: intl.formatMessage(messages.querystring),
+      //   fields: ['querystring'],
+      // },
       {
         id: 'display',
         title: intl.formatMessage(messages.itemDisplayOptions),
-        fields: ['howManyColumns', 'imageSide', 'imageWidth','titleTag', 'showDescription', 'effectiveDate','eventDate','eventTime','eventLocation'],
+        fields: ['howManyColumns', 'imageSide', 'imageWidth', 'titleTag', 'showDescription', 'effectiveDate', 'eventDate', 'eventTime', 'eventLocation'],
       },
       {
         id: 'moreLink',
