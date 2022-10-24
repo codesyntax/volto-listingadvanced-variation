@@ -14,6 +14,8 @@ This add-on adds a fully customizable variation to the default listing block. It
 - An option to select to show the event time
 - An option to select to show the event location
 
+![volto-listingadvanced-variation block details](https://github.com/rnunez80/volto-listingadvanced-variation/blob/main/Screenshot%202022-10-24%20at%2012.28.49%20PM.png?raw=true)
+
 Installation:
 
 - Add this package to your Volto's package.json dependencies
