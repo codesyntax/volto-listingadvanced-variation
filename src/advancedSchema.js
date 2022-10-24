@@ -1,7 +1,7 @@
 import messages from './messages';
 
 export const advancedSchema = (props) => {
-  const { intl, schema, formData } = props;
+  const {intl, schema, formData} = props;
   const imageWidth = ['right', 'left'].includes(formData.imageSide)
     ? ['imageWidth']
     : [];
@@ -16,7 +16,7 @@ export const advancedSchema = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['variation'],
+        fields: ['variation','headline','headlineTag'],
       },
       {
         id: 'querystring',
@@ -24,34 +24,9 @@ export const advancedSchema = (props) => {
         fields: ['querystring'],
       },
       {
-        id: 'header',
-        title: intl.formatMessage(messages.headerConfiguration),
-        fields: ['header', 'headerUrl', 'headerTag'],
-      },
-      {
-        id: 'columns',
-        title: intl.formatMessage(messages.columnsConfiguration),
-        fields: ['howManyColumns'],
-      },
-      {
-        id: 'image',
-        title: intl.formatMessage(messages.imageConfiguration),
-        fields: ['imageSide', ...imageWidth],
-      },
-      {
-        id: 'title',
-        title: intl.formatMessage(messages.titleConfiguration),
-        fields: ['titleTag'],
-      },
-      {
-        id: 'description',
-        title: intl.formatMessage(messages.descriptionConfiguration),
-        fields: ['showDescription'],
-      },
-      {
-        id: 'date',
-        title: intl.formatMessage(messages.dateConfiguration),
-        fields: ['effectiveDate'],
+        id: 'display',
+        title: intl.formatMessage(messages.itemDisplayOptions),
+        fields: ['howManyColumns', 'imageSide', 'imageWidth','titleTag', 'showDescription', 'effectiveDate','eventDate','eventTime','eventLocation'],
       },
       {
         id: 'moreLink',
@@ -61,22 +36,6 @@ export const advancedSchema = (props) => {
     ],
     properties: {
       ...schema.properties,
-      header: {
-        title: intl.formatMessage(messages.header),
-        description: intl.formatMessage(messages.headerDescription),
-      },
-      headerUrl: {
-        title: intl.formatMessage(messages.headerUrl),
-        description: intl.formatMessage(messages.headerUrlDescription),
-        widget: 'object_browser',
-        mode: 'link',
-        allowExternals: true,
-      },
-      headerTag: {
-        title: intl.formatMessage(messages.headerTag),
-        description: intl.formatMessage(messages.headerTagDescription),
-        choices: [['h1', 'H1'], ...headingChoices],
-      },
       howManyColumns: {
         title: intl.formatMessage(messages.columnsCount),
         choices: [
@@ -99,7 +58,6 @@ export const advancedSchema = (props) => {
       },
       imageSide: {
         title: intl.formatMessage(messages.imagePosition),
-        description: intl.formatMessage(messages.imagePositionDescription),
         choices: [
           [null, 'No image'],
           ['up', 'up'],
@@ -110,18 +68,27 @@ export const advancedSchema = (props) => {
       },
       titleTag: {
         title: intl.formatMessage(messages.titleTag),
-        description: intl.formatMessage(messages.titleTagDescription),
         choices: headingChoices,
       },
       showDescription: {
         title: intl.formatMessage(messages.descriptionTitle),
-        description: intl.formatMessage(messages.descriptionDescription),
         type: 'boolean',
         default: true,
       },
       effectiveDate: {
         title: intl.formatMessage(messages.date),
-        description: intl.formatMessage(messages.dateDescription),
+        type: 'boolean',
+      },
+      eventDate: {
+        title: intl.formatMessage(messages.eventDate),
+        type: 'boolean',
+      },
+      eventTime: {
+        title: intl.formatMessage(messages.eventTime),
+        type: 'boolean',
+      },
+      eventLocation: {
+        title: intl.formatMessage(messages.eventLocation),
         type: 'boolean',
       },
       moreLinkText: {
