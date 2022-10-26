@@ -67,8 +67,12 @@ const AdvancedListingBlockTemplate = ({
         month: 'short',
       })} ${parsedDate.getDate()}, ${parsedDate.getFullYear()}`;
     }
-    if (end == start) {return start}
-    else {return start + ' - ' + end;};
+    if (end == start) {
+      return start
+    } else {
+      return start + ' - ' + end;
+    }
+    ;
   };
   const getEventTime = (item) => {
     let start = '',
@@ -77,18 +81,17 @@ const AdvancedListingBlockTemplate = ({
     if (item.start) {
       const parsedDate = new Date(Date.parse(item.start));
       start = `${parsedDate.toLocaleString(
-        'en-US',
+        'default',
         {hour: 'numeric', minute: 'numeric', hour12: true},
       )}`;
     }
 
     if (item.end) {
       const parsedDate = new Date(Date.parse(item.end));
-      end = ` - ${parsedDate.toLocaleString('en-US', {
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true,
-      })}`;
+      end = ` - ${parsedDate.toLocaleString(
+        'default',
+        {hour: 'numeric', minute: 'numeric', hour12: true,}
+      )}`;
     }
 
     return start + end;
@@ -132,6 +135,16 @@ const AdvancedListingBlockTemplate = ({
                         src={flattenToAppURL(
                           `${item['@id']}/@@images/${item.image_field}/large`,
                         )}
+                        srcSet={flattenToAppURL(
+                          `${item['@id']}/@@images/${item.image_field}/mini 200w,' +
+                          ${item['@id']}/@@images/${item.image_field}/preview 400w,' +
+                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,' +
+                          ${item['@id']}/@@images/${item.image_field}/large 800w,' +
+                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,' +
+                          ${item['@id']}/@@images/${item.image_field}/great 1200w,' +
+                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                        )}
+                        sizes="(max-width: 200px) 200px, (max-width: 400px) 400px, (max-width: 600px) 600px,(max-width: 800px) 800px,(max-width: 1000px) 1000px,(max-width: 1200px) 1200px, 1600px"
                         alt={item.title}
                         size="small"
                       />
@@ -145,9 +158,10 @@ const AdvancedListingBlockTemplate = ({
                     {item.title ? item.title : item.id}
                   </ConditionalLink>
                 </TitleTag>
-                {eventDate|eventTime && <p class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
-                {eventTime && eventDate && <span> | </span>}
-                  {eventTime && <span className="start-time">{getEventTime(item)}</span>}</p>||null}
+                {item.location && eventDate | eventTime &&
+                  <p class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
+                    {eventTime && eventDate && <span> | </span>}
+                    {eventTime && <span className="start-time">{getEventTime(item)}</span>}</p> || null}
                 {eventLocation && <p>{item.location}</p>}
                 {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
                 {showDescription && item.description && (
@@ -172,6 +186,16 @@ const AdvancedListingBlockTemplate = ({
                         src={flattenToAppURL(
                           `${item['@id']}/@@images/${item.image_field}/large`,
                         )}
+                        srcSet={flattenToAppURL(
+                          `${item['@id']}/@@images/${item.image_field}/mini 200w,' +
+                          ${item['@id']}/@@images/${item.image_field}/preview 400w,' +
+                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,' +
+                          ${item['@id']}/@@images/${item.image_field}/large 800w,' +
+                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,' +
+                          ${item['@id']}/@@images/${item.image_field}/great 1200w,' +
+                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                        )}
+                        sizes="(max-width: 200px) 200px, (max-width: 400px) 400px, (max-width: 600px) 600px,(max-width: 800px) 800px,(max-width: 1000px) 1000px,(max-width: 1200px) 1200px, 1600px"
                         alt={item.title}
                         size="small"
                       />
