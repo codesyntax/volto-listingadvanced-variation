@@ -123,6 +123,7 @@ const AdvancedListingBlockTemplate = ({
                   {!item.image_field && (
                     <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
+                        className='listImage'
                         src={DefaultImageSVG}
                         alt="This content has no image, this is a default placeholder."
                         size="small"
@@ -132,6 +133,7 @@ const AdvancedListingBlockTemplate = ({
                   {item.image_field && (
                     <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
+                        className='listImage'
                         src={flattenToAppURL(
                           `${item['@id']}/@@images/${item.image_field}/large`,
                         )}
