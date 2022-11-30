@@ -116,9 +116,49 @@ const AdvancedListingBlockTemplate = ({
       </HeaderTag>
       <Grid columns={howManyColumns ? howManyColumns : 1} stackable>
         {items.map((item) => (
-          <Grid.Column key={item['@id']}>
+          <Grid.Column key={item['@id']} className='card'>
+
+            {['background'].includes(imageSide) && (
+              <div className="backgroundimage">
+                <ConditionalLink item={item} condition={!isEditMode}>
+                  <div className="focuspoint">
+                    <Image srcset={flattenToAppURL(
+                      `${item['@id']}/@@images/${item.image_field}/mini 200w,
+                          ${item['@id']}/@@images/${item.image_field}/preview 400w,
+                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,
+                          ${item['@id']}/@@images/${item.image_field}/large 800w,
+                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,
+                          ${item['@id']}/@@images/${item.image_field}/great 1200w,
+                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                    )}
+                           sizes="(max-width: 2560px) 100vw, 2560px"
+                           alt={item.title}
+                           size="small"
+                           src={flattenToAppURL(
+                             `${item['@id']}/@@images/${item.image_field}/large`,
+                           )}
+                    />
+                  </div>
+                  <div className="info-text">
+                    {item.location && eventDate | eventTime &&
+                      <span class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
+                        {eventTime && eventDate && <span> | </span>}
+                        {eventTime && <span className="start-time">{getEventTime(item)}</span>}</span> || null}
+                    <TitleTag>{item.title ? item.title : item.id}</TitleTag>
+                    <p>
+                      {eventLocation && <span>{item.location}<br/></span>}
+                      {effectiveDate && <span>{moment(item.effective).format('L')}<br/></span>}
+                      {showDescription && item.description && (
+                        <span>{item.description}</span>
+                      )}
+                    </p>
+                  </div>
+                </ConditionalLink>
+              </div>
+            )}
+
             <Grid columns={columnSize}>
-              {['up', 'left'].includes(imageSide) && (
+              {imageSide !== 'background' && (
                 <Grid.Column width={imageGridWidth}>
                   {!item.image_field && (
                     <ConditionalLink item={item} condition={!isEditMode}>
@@ -134,43 +174,45 @@ const AdvancedListingBlockTemplate = ({
                     <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
                         className='listImage'
+                        srcset={flattenToAppURL(
+                          `${item['@id']}/@@images/${item.image_field}/mini 200w,
+                          ${item['@id']}/@@images/${item.image_field}/preview 400w,
+                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,
+                          ${item['@id']}/@@images/${item.image_field}/large 800w,
+                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,
+                          ${item['@id']}/@@images/${item.image_field}/great 1200w,
+                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                        )}
+                        sizes="(max-width: 2560px) 100vw, 2560px"
+                        alt={item.title}
+                        size="small"
                         src={flattenToAppURL(
                           `${item['@id']}/@@images/${item.image_field}/large`,
                         )}
-                        srcSet={flattenToAppURL(
-                          `${item['@id']}/@@images/${item.image_field}/mini 200w,' +
-                          ${item['@id']}/@@images/${item.image_field}/preview 400w,' +
-                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,' +
-                          ${item['@id']}/@@images/${item.image_field}/large 800w,' +
-                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,' +
-                          ${item['@id']}/@@images/${item.image_field}/great 1200w,' +
-                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
-                        )}
-                        sizes="(max-width: 200px) 200px, (max-width: 400px) 400px, (max-width: 600px) 600px,(max-width: 800px) 800px,(max-width: 1000px) 1000px,(max-width: 1200px) 1200px, 1600px"
-                        alt={item.title}
-                        size="small"
                       />
                     </ConditionalLink>
                   )}
                 </Grid.Column>
               )}
-              <Grid.Column width={contentGridWidth}>
-                <TitleTag>
-                  <ConditionalLink item={item} condition={!isEditMode}>
-                    {item.title ? item.title : item.id}
-                  </ConditionalLink>
-                </TitleTag>
-                {item.location && eventDate | eventTime &&
-                  <p class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
-                    {eventTime && eventDate && <span> | </span>}
-                    {eventTime && <span className="start-time">{getEventTime(item)}</span>}</p> || null}
-                {eventLocation && <p>{item.location}</p>}
-                {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
-                {showDescription && item.description && (
-                  <p>{item.description}</p>
-                )}
+              {imageSide !== 'background' && (
+                <Grid.Column width={contentGridWidth}>
+                  <TitleTag>
+                    <ConditionalLink item={item} condition={!isEditMode}>
+                      {item.title ? item.title : item.id}
+                    </ConditionalLink>
+                  </TitleTag>
+                  {item.location && eventDate | eventTime &&
+                    <p class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
+                      {eventTime && eventDate && <span> | </span>}
+                      {eventTime && <span className="start-time">{getEventTime(item)}</span>}</p> || null}
+                  {eventLocation && <p>{item.location}</p>}
+                  {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
+                  {showDescription && item.description && (
+                    <p>{item.description}</p>
+                  )}
 
-              </Grid.Column>
+                </Grid.Column>
+              )}
               {['right', 'down'].includes(imageSide) && (
                 <Grid.Column width={imageGridWidth}>
                   {!item.image_field && (
@@ -187,27 +229,28 @@ const AdvancedListingBlockTemplate = ({
                     <ConditionalLink item={item} condition={!isEditMode}>
                       <Image
                         className='listImage'
+                        srcset={flattenToAppURL(
+                          `${item['@id']}/@@images/${item.image_field}/mini 200w,
+                          ${item['@id']}/@@images/${item.image_field}/preview 400w,
+                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,
+                          ${item['@id']}/@@images/${item.image_field}/large 800w,
+                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,
+                          ${item['@id']}/@@images/${item.image_field}/great 1200w,
+                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                        )}
+                        sizes="(max-width: 2560px) 100vw, 2560px"
+                        alt={item.title}
+                        size="small"
                         src={flattenToAppURL(
                           `${item['@id']}/@@images/${item.image_field}/large`,
                         )}
-                        srcSet={flattenToAppURL(
-                          `${item['@id']}/@@images/${item.image_field}/mini 200w,' +
-                          ${item['@id']}/@@images/${item.image_field}/preview 400w,' +
-                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,' +
-                          ${item['@id']}/@@images/${item.image_field}/large 800w,' +
-                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,' +
-                          ${item['@id']}/@@images/${item.image_field}/great 1200w,' +
-                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
-                        )}
-                        sizes="(max-width: 200px) 200px, (max-width: 400px) 400px, (max-width: 600px) 600px,(max-width: 800px) 800px,(max-width: 1000px) 1000px,(max-width: 1200px) 1200px, 1600px"
-                        alt={item.title}
-                        size="small"
                       />
                     </ConditionalLink>
                   )}
                 </Grid.Column>
               )}
             </Grid>
+
           </Grid.Column>
         ))}
       </Grid>

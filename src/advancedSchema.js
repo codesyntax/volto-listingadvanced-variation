@@ -65,6 +65,7 @@ export const advancedSchema = (props) => {
           ['left', 'left'],
           ['right', 'right'],
           ['down', 'down'],
+          ['background', 'background'],
         ],
       },
       titleTag: {
