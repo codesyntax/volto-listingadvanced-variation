@@ -123,13 +123,7 @@ const AdvancedListingBlockTemplate = ({
                 <ConditionalLink item={item} condition={!isEditMode}>
                   <div className="focuspoint">
                     <Image srcset={flattenToAppURL(
-                      `${item['@id']}/@@images/${item.image_field}/mini 200w,
-                          ${item['@id']}/@@images/${item.image_field}/preview 400w,
-                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,
-                          ${item['@id']}/@@images/${item.image_field}/large 800w,
-                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,
-                          ${item['@id']}/@@images/${item.image_field}/great 1200w,
-                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                      `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
                     )}
                            sizes="(max-width: 2560px) 100vw, 2560px"
                            alt={item.title}
@@ -175,13 +169,7 @@ const AdvancedListingBlockTemplate = ({
                       <Image
                         className='listImage'
                         srcset={flattenToAppURL(
-                          `${item['@id']}/@@images/${item.image_field}/mini 200w,
-                          ${item['@id']}/@@images/${item.image_field}/preview 400w,
-                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,
-                          ${item['@id']}/@@images/${item.image_field}/large 800w,
-                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,
-                          ${item['@id']}/@@images/${item.image_field}/great 1200w,
-                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                          `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
                         )}
                         sizes="(max-width: 2560px) 100vw, 2560px"
                         alt={item.title}
@@ -230,13 +218,7 @@ const AdvancedListingBlockTemplate = ({
                       <Image
                         className='listImage'
                         srcset={flattenToAppURL(
-                          `${item['@id']}/@@images/${item.image_field}/mini 200w,
-                          ${item['@id']}/@@images/${item.image_field}/preview 400w,
-                          ${item['@id']}/@@images/${item.image_field}/teaser 600w,
-                          ${item['@id']}/@@images/${item.image_field}/large 800w,
-                          ${item['@id']}/@@images/${item.image_field}/larger 1000w,
-                          ${item['@id']}/@@images/${item.image_field}/great 1200w,
-                          ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                          `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
                         )}
                         sizes="(max-width: 2560px) 100vw, 2560px"
                         alt={item.title}
