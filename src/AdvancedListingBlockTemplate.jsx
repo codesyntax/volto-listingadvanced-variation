@@ -122,6 +122,17 @@ const AdvancedListingBlockTemplate = ({
               <div className="backgroundimage">
                 <ConditionalLink item={item} condition={!isEditMode}>
                   <div className="focuspoint">
+                    {!item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
+                      <Image
+                        className='listImage'
+                        src={DefaultImageSVG}
+                        alt="This content has no image, this is a default placeholder."
+                        size="small"
+                      />
+                    </ConditionalLink>
+                  )}
+                  {item.image_field && (
                     <Image srcset={flattenToAppURL(
                       `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
                     )}
@@ -131,7 +142,7 @@ const AdvancedListingBlockTemplate = ({
                            src={flattenToAppURL(
                              `${item['@id']}/@@images/${item.image_field}/large`,
                            )}
-                    />
+                    />)}
                   </div>
                   <div className="info-text">
                     {item.location && eventDate | eventTime &&

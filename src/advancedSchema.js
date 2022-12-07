@@ -27,7 +27,7 @@ export const advancedSchema = (props) => {
       {
         id: 'display',
         title: intl.formatMessage(messages.itemDisplayOptions),
-        fields: ['howManyColumns', 'imageSide', 'imageWidth', 'titleTag', 'showDescription', 'effectiveDate', 'eventDate', 'eventTime', 'eventLocation'],
+        fields: ['titleTag', 'howManyColumns', 'imageSide', 'imageWidth', 'showDescription', 'effectiveDate', 'eventDate', 'eventTime', 'eventLocation'],
       },
       {
         id: 'moreLink',
@@ -37,6 +37,11 @@ export const advancedSchema = (props) => {
     ],
     properties: {
       ...schema.properties,
+      titleTag: {
+        title: intl.formatMessage(messages.titleTag),
+        choices: headingChoices,
+        default: 'h2',
+      },
       howManyColumns: {
         title: intl.formatMessage(messages.columnsCount),
         choices: [
@@ -45,6 +50,7 @@ export const advancedSchema = (props) => {
           [3, '3'],
           [4, '4'],
         ],
+        default: 4,
       },
       imageWidth: {
         title: intl.formatMessage(messages.imageWidth),
@@ -56,6 +62,7 @@ export const advancedSchema = (props) => {
           [5, '5/12'],
           [6, '6/12'],
         ],
+        default: 2,
       },
       imageSide: {
         title: intl.formatMessage(messages.imagePosition),
@@ -67,10 +74,7 @@ export const advancedSchema = (props) => {
           ['down', 'down'],
           ['background', 'background'],
         ],
-      },
-      titleTag: {
-        title: intl.formatMessage(messages.titleTag),
-        choices: headingChoices,
+        default: 'up',
       },
       showDescription: {
         title: intl.formatMessage(messages.descriptionTitle),
