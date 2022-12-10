@@ -8,25 +8,34 @@ import {isInternalURL} from '@plone/volto/helpers/Url/Url';
 import {Grid, Image} from 'semantic-ui-react';
 import moment from 'moment';
 import {useIntl} from 'react-intl';
+import {Button, Icon} from 'semantic-ui-react';
+import loadable from '@loadable/component';
+import Slider from "react-slick";
 
-const AdvancedListingBlockTemplate = ({
-                                        items,
-                                        moreLinkText,
-                                        moreLinkUrl,
-                                        header,
-                                        headerUrl,
-                                        headerTag,
-                                        isEditMode,
-                                        imageSide,
-                                        imageWidth,
-                                        howManyColumns,
-                                        effectiveDate,
-                                        titleTag,
-                                        showDescription,
-                                        eventDate,
-                                        eventLocation,
-                                        eventTime
-                                      }) => {
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+import UniversalCard from '@eeacms/volto-listing-block/components/UniversalCard/UniversalCard';
+import ResponsiveContainer from '@eeacms/volto-listing-block/components/ResponsiveContainer';
+
+const AdvancedCarouselBlockTemplate = ({
+                                         items,
+                                         moreLinkText,
+                                         moreLinkUrl,
+                                         header,
+                                         headerUrl,
+                                         headerTag,
+                                         isEditMode,
+                                         imageSide,
+                                         imageWidth,
+                                         howManyColumns,
+                                         effectiveDate,
+                                         titleTag,
+                                         showDescription,
+                                         eventDate,
+                                         eventLocation,
+                                         eventTime
+                                       }) => {
   let moreLink = null;
   let moreHref = moreLinkUrl?.[0]?.['@id'] || '';
   if (isInternalURL(moreHref)) {
@@ -114,7 +123,43 @@ const AdvancedListingBlockTemplate = ({
       {headerLink && <HeaderTag className="listing-header">
         {headerLink ? headerLink : header}
       </HeaderTag>}
-      <Grid columns={howManyColumns ? howManyColumns : 1} stackable className='advanced-listing'>
+      <Slider
+        dots={true}
+        infinite={true}
+        speed={500}
+        slidesToShow={howManyColumns ? howManyColumns : 1}
+        slidesToScroll={1}
+        autoplay={true}
+        autoplaySpeed={5000}
+        pauseOnHover={true}
+        arrows={true}
+        responsive={[
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true,
+            },
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              initialSlide: 2,
+            },
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+        ]}
+      >
         {!['background'].includes(imageSide) && (
           <>{items.map((item) => (
             <Grid columns={columnSize}>
@@ -244,15 +289,18 @@ const AdvancedListingBlockTemplate = ({
             </Grid>
           ))}</>
         )}
-      </Grid>
+      </Slider>
+
     </>
   );
+
+
 };
 
-AdvancedListingBlockTemplate.propTypes = {
+AdvancedCarouselBlockTemplate.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
   linkMore: PropTypes.any,
   isEditMode: PropTypes.bool,
 };
 
-export default AdvancedListingBlockTemplate;
+export default AdvancedCarouselBlockTemplate;

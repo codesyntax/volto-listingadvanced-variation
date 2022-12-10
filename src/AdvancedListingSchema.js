@@ -1,6 +1,6 @@
 import messages from './messages';
 
-export const advancedSchema = (props) => {
+export const advancedListingSchema = (props) => {
   const {intl, schema, formData} = props;
   // const imageWidth = ['right', 'left'].includes(formData.imageSide)
   //   ? ['imageWidth']
@@ -14,25 +14,10 @@ export const advancedSchema = (props) => {
     ...schema,
     fieldsets: [
       ...schema.fieldsets,
-      // {
-      //   id: 'default',
-      //   title: 'Default',
-      //   fields: ['variation', 'headline', 'headlineTag'],
-      // },
-      // {
-      //   id: 'querystring',
-      //   title: intl.formatMessage(messages.querystring),
-      //   fields: ['querystring'],
-      // },
       {
         id: 'display',
         title: intl.formatMessage(messages.itemDisplayOptions),
         fields: ['titleTag', 'howManyColumns', 'imageSide', 'imageWidth', 'showDescription', 'effectiveDate', 'eventDate', 'eventTime', 'eventLocation'],
-      },
-      {
-        id: 'moreLink',
-        title: intl.formatMessage(messages.moreLinkConfiguration),
-        fields: ['moreLinkText', 'moreLinkUrl'],
       },
     ],
     properties: {
@@ -50,7 +35,7 @@ export const advancedSchema = (props) => {
           [3, '3'],
           [4, '4'],
         ],
-        default: 4,
+        default: 2,
       },
       imageWidth: {
         title: intl.formatMessage(messages.imageWidth),
@@ -62,17 +47,17 @@ export const advancedSchema = (props) => {
           [5, '5/12'],
           [6, '6/12'],
         ],
-        default: 2,
+        default: 4,
       },
       imageSide: {
         title: intl.formatMessage(messages.imagePosition),
         choices: [
           [null, 'No image'],
+          ['background', 'background'],
           ['up', 'up'],
           ['left', 'left'],
           ['right', 'right'],
           ['down', 'down'],
-          ['background', 'background'],
         ],
         default: 'up',
       },

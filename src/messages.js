@@ -55,7 +55,7 @@ const messages = defineMessages({
   },
   imageWidthDescription: {
     id: 'Left/Right image width (default 2/12)',
-    defaultMessage: 'Left/Right image width (default 2/12)',
+    defaultMessage: 'Left/Right image width (default 4/12)',
   },
   imagePosition: {
     id: 'Image position',
