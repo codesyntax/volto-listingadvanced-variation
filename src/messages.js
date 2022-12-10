@@ -13,14 +13,6 @@ const messages = defineMessages({
     id: 'Header text',
     defaultMessage: 'Header text',
   },
-  headerDescription: {
-    id: 'Header description',
-    defaultMessage: 'Block header text',
-  },
-  headerDescription: {
-    id: 'Header description',
-    defaultMessage: 'Block header text',
-  },
   headerUrl: {
     id: 'Header url',
     defaultMessage: 'Header url or object',
