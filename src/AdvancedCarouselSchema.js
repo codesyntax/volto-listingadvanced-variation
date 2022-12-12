@@ -17,7 +17,7 @@ export const advancedCarouselSchema = (props) => {
       {
         id: 'carousel',
         title: 'Carousel/Slider Options',
-        fields: ['howManyColumns', ],
+        fields: ['howManyColumns', 'slidesToScroll', 'autoPlay','autoplaySpeed'],
       },
       {
         id: 'display',
@@ -41,6 +41,36 @@ export const advancedCarouselSchema = (props) => {
           [4, '4'],
         ],
         default: 2,
+      },
+      slidesToScroll: {
+        title: 'Slides to scroll',
+        choices: [
+          [1, '1'],
+          [2, '2'],
+          [3, '3'],
+          [4, '4'],
+        ],
+        default: 1,
+      },
+      autoPlay: {
+        title: "Autoplay",
+        type: 'boolean',
+        default: true
+      },
+      autoplaySpeed: {
+        title: 'Speed Autoplay',
+        type: 'number',
+        choices: [
+          [3, '3'],
+          [4, '4'],
+          [5, '5'],
+          [6, '6'],
+          [7, '7'],
+          [8, '8'],
+          [9, '9'],
+          [10, '10'],
+        ],
+        default: 5000
       },
       imageSide: {
         title: intl.formatMessage(messages.imagePosition),
