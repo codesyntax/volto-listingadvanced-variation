@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import {ConditionalLink} from '@plone/volto/components';
 import {flattenToAppURL} from '@plone/volto/helpers';
 
-import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
+// import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
+import DefaultImageSVG from './placeholder.png';
 import {isInternalURL} from '@plone/volto/helpers/Url/Url';
 import {Grid, Image} from 'semantic-ui-react';
 import moment from 'moment';
@@ -114,10 +115,10 @@ const AdvancedListingBlockTemplate = ({
       {headerLink && <HeaderTag className="listing-header">
         {headerLink ? headerLink : header}
       </HeaderTag>}
-      <Grid columns={howManyColumns ? howManyColumns : 1} stackable className='advanced-listing'>
+      <Grid columns={howManyColumns ? howManyColumns : 1} stackable  className={'column'+howManyColumns}>
         {!['background'].includes(imageSide) && (
-          <>{items.map((item) => (
-            <Grid columns={columnSize}>
+          items.map((item) => (
+            <Grid columns={columnSize} className='advanced-item' >
               {['up', 'left'].includes(imageSide) && (
                 <Grid.Column width={imageGridWidth}>
                   {!item.image_field && (
@@ -193,11 +194,11 @@ const AdvancedListingBlockTemplate = ({
                   )}
                 </Grid.Column>)}
             </Grid>
-          ))}</>
+          ))
         )}
         {['background'].includes(imageSide) && (
-          <>{items.map((item) => (
-            <Grid columns={columnSize}>
+          items.map((item) => (
+            <Grid columns={columnSize} className='advanced-item'>
               <Grid.Column>
                 <div className="backgroundimage">
                   <ConditionalLink item={item} condition={!isEditMode}>
@@ -242,7 +243,7 @@ const AdvancedListingBlockTemplate = ({
                 </div>
               </Grid.Column>
             </Grid>
-          ))}</>
+          ))
         )}
       </Grid>
     </>
