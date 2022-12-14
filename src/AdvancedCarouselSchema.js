@@ -20,7 +20,7 @@ export const advancedCarouselSchema = (props) => {
         fields: ['howManyColumns', 'slidesToScroll', 'autoPlay', 'autoplaySpeed'],
       },
       {
-        id: 'display',
+        id: 'carouselDisplay',
         title: intl.formatMessage(messages.itemDisplayOptions),
         fields: ['titleTag', 'imageSide', 'showTitle', 'showDescription', 'effectiveDate', 'eventDate', 'eventTime', 'eventLocation'],
       },

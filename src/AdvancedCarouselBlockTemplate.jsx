@@ -5,10 +5,9 @@ import {flattenToAppURL} from '@plone/volto/helpers';
 
 import DefaultImageSVG from './placeholder.png';
 import {isInternalURL} from '@plone/volto/helpers/Url/Url';
-import {Grid, Image} from 'semantic-ui-react';
+import {Grid, Image, Label, Icon} from 'semantic-ui-react';
 import moment from 'moment';
 import {useIntl} from 'react-intl';
-import {Button, Icon} from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import Slider from "react-slick";
 import './Advanced.css';
@@ -123,9 +122,11 @@ const AdvancedCarouselBlockTemplate = ({
   const intl = useIntl();
   const TitleTag = titleTag ? titleTag : 'h3';
   const HeaderTag = headerTag ? headerTag : 'h3';
+  const AutoPlay = autoPlay ? autoPlay : '1';
+  const AutoPlaySpeed = autoplaySpeed ? autoplaySpeed : '3';
   moment.locale(intl.locale);
   return (
-    <>
+    <div className="advancedCarousel">
       {headerLink && <HeaderTag className="listing-header">
         {headerLink ? headerLink : header}
       </HeaderTag>}
@@ -137,8 +138,8 @@ const AdvancedCarouselBlockTemplate = ({
           speed={500}
           slidesToShow={howManyColumns ? howManyColumns : 1}
           slidesToScroll={slidesToScroll ? slidesToScroll : 1}
-          autoplay={autoPlay}
-          autoplaySpeed={autoplaySpeed * 1000}
+          autoplay={AutoPlay}
+          autoplaySpeed={AutoPlaySpeed * 1000}
           pauseOnHover={true}
           arrows={true}
           responsive={howManyColumns >= 3 ? [
@@ -257,9 +258,10 @@ const AdvancedCarouselBlockTemplate = ({
                     </ConditionalLink>
                   </TitleTag>}
                   {item.location && eventDate | eventTime &&
-                    <p className="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
+                    <div className="event-when">
+                      {eventDate && <span className="start-date">{getEventDate(item)}</span>}
                       {eventTime && eventDate && <span> | </span>}
-                      {eventTime && <span className="start-time">{getEventTime(item)}</span>}</p> || null}
+                      {eventTime && <span className="start-time">{getEventTime(item)}</span>}</div> || null}
                   {eventLocation && <p>{item.location}</p>}
                   {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
                   {showDescription && item.description && (
@@ -301,7 +303,7 @@ const AdvancedCarouselBlockTemplate = ({
 
         </Slider>
 
-    </>
+    </div>
   );
 
 

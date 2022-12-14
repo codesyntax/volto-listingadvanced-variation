@@ -15,9 +15,9 @@ export const advancedListingSchema = (props) => {
     fieldsets: [
       ...schema.fieldsets,
       {
-        id: 'display',
+        id: 'listingDisplay',
         title: intl.formatMessage(messages.itemDisplayOptions),
-        fields: ['titleTag', 'howManyColumns', 'imageSide', 'imageWidth', 'showDescription', 'effectiveDate', 'eventDate', 'eventTime', 'eventLocation'],
+        fields: ['titleTag', 'howManyColumns', 'imageSide', 'imageWidth', 'showTitle', 'showDescription', 'effectiveDate', 'eventDate', 'eventTime', 'eventLocation'],
       },
     ],
     properties: {
@@ -60,6 +60,11 @@ export const advancedListingSchema = (props) => {
           ['down', 'down'],
         ],
         default: 'up',
+      },
+      showTitle: {
+        title: 'Show Title',
+        type: 'boolean',
+        default: true,
       },
       showDescription: {
         title: intl.formatMessage(messages.descriptionTitle),

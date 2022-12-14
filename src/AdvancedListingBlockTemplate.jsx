@@ -26,7 +26,8 @@ const AdvancedListingBlockTemplate = ({
                                         showDescription,
                                         eventDate,
                                         eventLocation,
-                                        eventTime
+                                        eventTime,
+                                        showTitle
                                       }) => {
   let moreLink = null;
   let moreHref = moreLinkUrl?.[0]?.['@id'] || '';
@@ -115,10 +116,10 @@ const AdvancedListingBlockTemplate = ({
       {headerLink && <HeaderTag className="listing-header">
         {headerLink ? headerLink : header}
       </HeaderTag>}
-      <Grid columns={howManyColumns ? howManyColumns : 1} stackable  className={'column'+howManyColumns}>
+      <Grid columns={howManyColumns ? howManyColumns : 1} stackable className={'column' + howManyColumns}>
         {!['background'].includes(imageSide) && (
           items.map((item) => (
-            <Grid columns={columnSize} className='advanced-item' >
+            <Grid columns={columnSize} className='advanced-item'>
               {['up', 'left'].includes(imageSide) && (
                 <Grid.Column width={imageGridWidth}>
                   {!item.image_field && (
@@ -149,11 +150,11 @@ const AdvancedListingBlockTemplate = ({
                   )}
                 </Grid.Column>)}
               <Grid.Column width={contentGridWidth} verticalAlign='top'>
-                <TitleTag>
+                {showTitle && <TitleTag>
                   <ConditionalLink item={item} condition={!isEditMode}>
                     {item.title ? item.title : item.id}
                   </ConditionalLink>
-                </TitleTag>
+                </TitleTag>}
                 {item.location && eventDate | eventTime &&
                   <p className="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
                     {eventTime && eventDate && <span> | </span>}
@@ -230,7 +231,7 @@ const AdvancedListingBlockTemplate = ({
                         <span class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
                           {eventTime && eventDate && <span> | </span>}
                           {eventTime && <span className="start-time">{getEventTime(item)}</span>}</span> || null}
-                      <TitleTag>{item.title ? item.title : item.id}</TitleTag>
+                      {showTitle && <TitleTag>{item.title ? item.title : item.id}</TitleTag>}
                       <p>
                         {eventLocation && <span>{item.location}<br/></span>}
                         {effectiveDate && <span>{moment(item.effective).format('L')}<br/></span>}
