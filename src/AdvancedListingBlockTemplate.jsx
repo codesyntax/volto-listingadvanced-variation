@@ -255,12 +255,12 @@ const AdvancedListingBlockTemplate = ({
                         <span class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
                           {eventTime && eventDate && <span> | </span>}
                           {eventTime && <span className="start-time">{getEventTime(item)}</span>}</span> || null}
-                      {showTitle && <TitleTag>{item.title ? item.title : item.id}</TitleTag>}
+                      {showTitle && <TitleTag className='text-ellipsis'>{item.title ? item.title : item.id}</TitleTag>}
                       <p>
                         {eventLocation && <span>{item.location}<br/></span>}
                         {effectiveDate && <span>{moment(item.effective).format('L')}<br/></span>}
                         {showDescription && item.description && (
-                          <span>{item.description}</span>
+                          <span className='limited-text'>{item.description}</span>
                         )}
                       </p>
                     </div>

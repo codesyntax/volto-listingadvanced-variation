@@ -74,7 +74,19 @@
   background: #b11116;
   padding: 0 0.5em;
 }
-
+.limited-text {
+  text-overflow:ellipsis;
+  overflow:hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+.text-ellipsis{
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+}
 /* End existing-content-backgroundimage */
 
 /* Start Slick */
