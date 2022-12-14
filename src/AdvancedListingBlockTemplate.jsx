@@ -27,7 +27,8 @@ const AdvancedListingBlockTemplate = ({
                                         eventDate,
                                         eventLocation,
                                         eventTime,
-                                        showTitle
+                                        showTitle,
+                                        eventCard
                                       }) => {
   let moreLink = null;
   let moreHref = moreLinkUrl?.[0]?.['@id'] || '';
@@ -52,6 +53,27 @@ const AdvancedListingBlockTemplate = ({
   } else if (headerHref) {
     moreLink = <a href={headerHref}>{moreLinkText || headerHref}</a>;
   }
+  const getEventCard = (item) => {
+    let startMonth = '', startDay = '', startWeekday = '', startTime = '';
+    if (item.start) {
+      const parsedDate = new Date(Date.parse(item.start));
+      startMonth = `${parsedDate.toLocaleString('default', {
+        month: 'long',
+      })}`;
+      startDay = parsedDate.getDate();
+      startWeekday = parsedDate.toLocaleString('default', {
+        weekday: 'long',
+      });
+      return <div class="cal_date">
+        <span class="cal_month">{startMonth}</span>
+        <span class="cal_day">{startDay}</span>
+        <span class="cal_wkday">{startWeekday}</span>
+      </div>;
+    } else {
+      return '';
+    }
+    ;
+  };
   const getEventDate = (item) => {
     let start = '',
       end = '';
@@ -112,7 +134,7 @@ const AdvancedListingBlockTemplate = ({
   const HeaderTag = headerTag ? headerTag : 'h3';
   moment.locale(intl.locale);
   return (
-    <>
+    <div className='advancedView advancedList'>
       {headerLink && <HeaderTag className="listing-header">
         {headerLink ? headerLink : header}
       </HeaderTag>}
@@ -150,6 +172,7 @@ const AdvancedListingBlockTemplate = ({
                   )}
                 </Grid.Column>)}
               <Grid.Column width={contentGridWidth} verticalAlign='top'>
+                {eventCard && <>{getEventCard(item)}</>}
                 {showTitle && <TitleTag>
                   <ConditionalLink item={item} condition={!isEditMode}>
                     {item.title ? item.title : item.id}
@@ -227,6 +250,7 @@ const AdvancedListingBlockTemplate = ({
                         />)}
                     </div>
                     <div className="info-text">
+                      {eventCard && <>{getEventCard(item)}</>}
                       {item.location && eventDate | eventTime &&
                         <span class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
                           {eventTime && eventDate && <span> | </span>}
@@ -247,7 +271,7 @@ const AdvancedListingBlockTemplate = ({
           ))
         )}
       </Grid>
-    </>
+    </div>
   );
 };
 

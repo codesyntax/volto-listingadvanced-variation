@@ -17,7 +17,7 @@ export const advancedListingSchema = (props) => {
       {
         id: 'listingDisplay',
         title: intl.formatMessage(messages.itemDisplayOptions),
-        fields: ['titleTag', 'howManyColumns', 'imageSide', 'imageWidth', 'showTitle', 'showDescription', 'effectiveDate', 'eventDate', 'eventTime', 'eventLocation'],
+        fields: ['titleTag', 'howManyColumns', 'imageSide', 'imageWidth', 'showTitle', 'showDescription', 'eventCard', 'eventDate', 'eventTime', 'eventLocation', 'effectiveDate'],
       },
     ],
     properties: {
@@ -75,6 +75,10 @@ export const advancedListingSchema = (props) => {
         title: intl.formatMessage(messages.date),
         type: 'boolean',
       },
+      eventCard: {
+        title: 'Show Event Card',
+        type: 'boolean',
+      },
       eventDate: {
         title: intl.formatMessage(messages.eventDate),
         type: 'boolean',
@@ -86,17 +90,6 @@ export const advancedListingSchema = (props) => {
       eventLocation: {
         title: intl.formatMessage(messages.eventLocation),
         type: 'boolean',
-      },
-      moreLinkText: {
-        title: intl.formatMessage(messages.moreLinkText),
-        description: intl.formatMessage(messages.moreLinkTextDescription),
-      },
-      moreLinkUrl: {
-        title: intl.formatMessage(messages.moreLinkUrl),
-        description: intl.formatMessage(messages.moreLinkUrlDescription),
-        widget: 'object_browser',
-        mode: 'link',
-        allowExternals: true,
       },
     },
   };

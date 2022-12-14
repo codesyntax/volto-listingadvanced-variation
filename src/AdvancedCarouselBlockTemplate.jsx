@@ -39,7 +39,8 @@ const AdvancedCarouselBlockTemplate = ({
                                          eventTime,
                                          slidesToScroll,
                                          autoPlay,
-                                         autoplaySpeed
+                                         autoplaySpeed,
+                                         eventCard
                                        }) => {
   let moreLink = null;
   let moreHref = moreLinkUrl?.[0]?.['@id'] || '';
@@ -64,6 +65,27 @@ const AdvancedCarouselBlockTemplate = ({
   } else if (headerHref) {
     moreLink = <a href={headerHref}>{moreLinkText || headerHref}</a>;
   }
+  const getEventCard = (item) => {
+    let startMonth = '', startDay = '', startWeekday = '', startTime = '';
+    if (item.start) {
+      const parsedDate = new Date(Date.parse(item.start));
+      startMonth = `${parsedDate.toLocaleString('default', {
+        month: 'long',
+      })}`;
+      startDay = parsedDate.getDate();
+      startWeekday = parsedDate.toLocaleString('default', {
+        weekday: 'long',
+      });
+      return <div class="cal_date">
+        <span class="cal_month">{startMonth}</span>
+        <span class="cal_day">{startDay}</span>
+        <span class="cal_wkday">{startWeekday}</span>
+      </div>;
+    } else {
+      return '';
+    }
+    ;
+  };
   const getEventDate = (item) => {
     let start = '',
       end = '';
@@ -126,182 +148,184 @@ const AdvancedCarouselBlockTemplate = ({
   const AutoPlaySpeed = autoplaySpeed ? autoplaySpeed : '3';
   moment.locale(intl.locale);
   return (
-    <div className="advancedCarousel">
+    <div className="advancedView">
       {headerLink && <HeaderTag className="listing-header">
         {headerLink ? headerLink : header}
       </HeaderTag>}
 
-        <Slider className={'column'+howManyColumns}
-          dots={true}
-          infinite={true}
-          lazyLoad={true}
-          speed={500}
-          slidesToShow={howManyColumns ? howManyColumns : 1}
-          slidesToScroll={slidesToScroll ? slidesToScroll : 1}
-          autoplay={AutoPlay}
-          autoplaySpeed={AutoPlaySpeed * 1000}
-          pauseOnHover={true}
-          arrows={true}
-          responsive={howManyColumns >= 3 ? [
-            {
-              breakpoint: 1169,
-              settings: {
-                slidesToShow: 3,
-              },
-            },
-            {
-              breakpoint: 991,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-              },
-            },
-            {
-              breakpoint: 767,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-              },
-            },
-          ] : [
-            {
-              breakpoint: 767,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-              },
-            },
-          ]}
-        >
-          {['background'].includes(imageSide) && (
-            items.map((item) => (
-              <div className="backgroundimage">
-                <ConditionalLink item={item} condition={!isEditMode}>
-                  <div className="focuspoint">
-                    {!item.image_field && (
-                      <ConditionalLink item={item} condition={!isEditMode}>
-                        <Image
-                          className='listImage'
-                          src={DefaultImageSVG}
-                          alt="This content has no image, this is a default placeholder."
-                          size="small"
-                        />
-                      </ConditionalLink>
+      <Slider className={'column' + howManyColumns}
+              dots={true}
+              infinite={true}
+              lazyLoad={true}
+              speed={500}
+              slidesToShow={howManyColumns ? howManyColumns : 1}
+              slidesToScroll={slidesToScroll ? slidesToScroll : 1}
+              autoplay={AutoPlay}
+              autoplaySpeed={AutoPlaySpeed * 1000}
+              pauseOnHover={true}
+              arrows={true}
+              responsive={howManyColumns >= 3 ? [
+                {
+                  breakpoint: 1169,
+                  settings: {
+                    slidesToShow: 3,
+                  },
+                },
+                {
+                  breakpoint: 991,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                  },
+                },
+                {
+                  breakpoint: 767,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                  },
+                },
+              ] : [
+                {
+                  breakpoint: 767,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                  },
+                },
+              ]}
+      >
+        {['background'].includes(imageSide) && (
+          items.map((item) => (
+            <div className="backgroundimage">
+              <ConditionalLink item={item} condition={!isEditMode}>
+                <div className="focuspoint">
+                  {!item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
+                      <Image
+                        className='listImage'
+                        src={DefaultImageSVG}
+                        alt="This content has no image, this is a default placeholder."
+                        size="small"
+                      />
+                    </ConditionalLink>
+                  )}
+                  {item.image_field && (
+                    <Image srcset={flattenToAppURL(
+                      `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
                     )}
-                    {item.image_field && (
-                      <Image srcset={flattenToAppURL(
-                        `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
-                      )}
-                             sizes="(max-width: 2560px) 100vw, 2560px"
-                             alt={item.title}
-                             size="small"
-                             src={flattenToAppURL(
-                               `${item['@id']}/@@images/${item.image_field}/large`,
-                             )}
-                      />)}
-                  </div>
-                  <div className="info-text">
-                    {item.location && eventDate | eventTime &&
-                      <span class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
-                        {eventTime && eventDate && <span> | </span>}
-                        {eventTime && <span className="start-time">{getEventTime(item)}</span>}</span> || null}
-                    {showTitle && <TitleTag>{item.title ? item.title : item.id}</TitleTag>}
-                    <p>
-                      {eventLocation && <span>{item.location}<br/></span>}
-                      {effectiveDate && <span>{moment(item.effective).format('L')}<br/></span>}
-                      {showDescription && item.description && (
-                        <span>{item.description}</span>
-                      )}
-                    </p>
-                  </div>
-                </ConditionalLink>
-              </div>
-            ))
-          )}
-          {!['background'].includes(imageSide) && (
-            items.map((item) => (
-              <Grid columns={columnSize}>
-                {['up', 'left'].includes(imageSide) && (
-                  <Grid.Column width={imageGridWidth} className='advanced-item'>
-                    {!item.image_field && (
-                      <ConditionalLink item={item} condition={!isEditMode}>
-                        <Image
-                          className='listImage'
-                          src={DefaultImageSVG}
-                          alt="This content has no image, this is a default placeholder."
-                          size="small"
-                        />
-                      </ConditionalLink>
+                           sizes="(max-width: 2560px) 100vw, 2560px"
+                           alt={item.title}
+                           size="small"
+                           src={flattenToAppURL(
+                             `${item['@id']}/@@images/${item.image_field}/large`,
+                           )}
+                    />)}
+                </div>
+                <div className="info-text">
+                  {eventCard && <>{getEventCard(item)}</>}
+                  {item.location && eventDate | eventTime &&
+                    <span class="event-when">{eventDate && <span className="start-date">{getEventDate(item)}</span>}
+                      {eventTime && eventDate && <span> | </span>}
+                      {eventTime && <span className="start-time">{getEventTime(item)}</span>}</span> || null}
+                  {showTitle && <TitleTag>{item.title ? item.title : item.id}</TitleTag>}
+                  <p>
+                    {eventLocation && <span>{item.location}<br/></span>}
+                    {effectiveDate && <span>{moment(item.effective).format('L')}<br/></span>}
+                    {showDescription && item.description && (
+                      <span>{item.description}</span>
                     )}
-                    {item.image_field && (
-                      <ConditionalLink item={item} condition={!isEditMode}>
-                        <Image
-                          src={flattenToAppURL(
-                            `${item['@id']}/@@images/${item.image_field}/preview`,
-                          )}
-                          className='listImage'
-                          srcset={flattenToAppURL(
-                            `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
-                          )}
-                          sizes="(max-width: 2560px) 100vw, 2560px"
-                          alt={item.title}
-                          size="small"
-                        />
-                      </ConditionalLink>
-                    )}
-                  </Grid.Column>)}
-                <Grid.Column width={contentGridWidth} verticalAlign='top'>
-                  {showTitle &&
-                    <TitleTag>
+                  </p>
+                </div>
+              </ConditionalLink>
+            </div>
+          ))
+        )}
+        {!['background'].includes(imageSide) && (
+          items.map((item) => (
+            <Grid columns={columnSize}>
+              {['up', 'left'].includes(imageSide) && (
+                <Grid.Column width={imageGridWidth} className='advanced-item'>
+                  {!item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
+                      <Image
+                        className='listImage'
+                        src={DefaultImageSVG}
+                        alt="This content has no image, this is a default placeholder."
+                        size="small"
+                      />
+                    </ConditionalLink>
+                  )}
+                  {item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
+                      <Image
+                        src={flattenToAppURL(
+                          `${item['@id']}/@@images/${item.image_field}/preview`,
+                        )}
+                        className='listImage'
+                        srcset={flattenToAppURL(
+                          `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                        )}
+                        sizes="(max-width: 2560px) 100vw, 2560px"
+                        alt={item.title}
+                        size="small"
+                      />
+                    </ConditionalLink>
+                  )}
+                </Grid.Column>)}
+              <Grid.Column width={contentGridWidth} verticalAlign='top'>
+                {eventCard && <>{getEventCard(item)}</>}
+                {showTitle &&
+                  <TitleTag>
                     <ConditionalLink item={item} condition={!isEditMode}>
                       {item.title ? item.title : item.id}
                     </ConditionalLink>
                   </TitleTag>}
-                  {item.location && eventDate | eventTime &&
-                    <div className="event-when">
-                      {eventDate && <span className="start-date">{getEventDate(item)}</span>}
-                      {eventTime && eventDate && <span> | </span>}
-                      {eventTime && <span className="start-time">{getEventTime(item)}</span>}</div> || null}
-                  {eventLocation && <p>{item.location}</p>}
-                  {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
-                  {showDescription && item.description && (
-                    <p>{item.description}</p>
+                {item.location && eventDate | eventTime &&
+                  <div className="event-when">
+                    {eventDate && <span className="start-date">{getEventDate(item)}</span>}
+                    {eventTime && eventDate && <span> | </span>}
+                    {eventTime && <span className="start-time">{getEventTime(item)}</span>}</div> || null}
+                {eventLocation && <p>{item.location}</p>}
+                {effectiveDate && <p>{moment(item.effective).format('L')}</p>}
+                {showDescription && item.description && (
+                  <p>{item.description}</p>
+                )}
+              </Grid.Column>
+              {['right', 'down'].includes(imageSide) && (
+                <Grid.Column width={imageGridWidth}>
+                  {!item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
+                      <Image
+                        className='listImage'
+                        src={DefaultImageSVG}
+                        alt="This content has no image, this is a default placeholder."
+                        size="small"
+                      />
+                    </ConditionalLink>
                   )}
-                </Grid.Column>
-                {['right', 'down'].includes(imageSide) && (
-                  <Grid.Column width={imageGridWidth}>
-                    {!item.image_field && (
-                      <ConditionalLink item={item} condition={!isEditMode}>
-                        <Image
-                          className='listImage'
-                          src={DefaultImageSVG}
-                          alt="This content has no image, this is a default placeholder."
-                          size="small"
-                        />
-                      </ConditionalLink>
-                    )}
-                    {item.image_field && (
-                      <ConditionalLink item={item} condition={!isEditMode}>
-                        <Image
-                          src={flattenToAppURL(
-                            `${item['@id']}/@@images/${item.image_field}/large`,
-                          )}
-                          className='listImage'
-                          srcset={flattenToAppURL(
-                            `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
-                          )}
-                          sizes="(max-width: 2560px) 100vw, 2560px"
-                          alt={item.title}
-                          size="small"
-                        />
-                      </ConditionalLink>
-                    )}
-                  </Grid.Column>)}
-              </Grid>
-            ))
-          )}
+                  {item.image_field && (
+                    <ConditionalLink item={item} condition={!isEditMode}>
+                      <Image
+                        src={flattenToAppURL(
+                          `${item['@id']}/@@images/${item.image_field}/large`,
+                        )}
+                        className='listImage'
+                        srcset={flattenToAppURL(
+                          `${item['@id']}/@@images/${item.image_field}/mini 200w, ${item['@id']}/@@images/${item.image_field}/preview 400w, ${item['@id']}/@@images/${item.image_field}/teaser 600w, ${item['@id']}/@@images/${item.image_field}/large 800w, ${item['@id']}/@@images/${item.image_field}/larger 1000w, ${item['@id']}/@@images/${item.image_field}/great 1200w, ${item['@id']}/@@images/${item.image_field}/huge 1600w'`,
+                        )}
+                        sizes="(max-width: 2560px) 100vw, 2560px"
+                        alt={item.title}
+                        size="small"
+                      />
+                    </ConditionalLink>
+                  )}
+                </Grid.Column>)}
+            </Grid>
+          ))
+        )}
 
-        </Slider>
+      </Slider>
 
     </div>
   );

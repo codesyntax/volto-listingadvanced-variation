@@ -22,7 +22,7 @@ export const advancedCarouselSchema = (props) => {
       {
         id: 'carouselDisplay',
         title: intl.formatMessage(messages.itemDisplayOptions),
-        fields: ['titleTag', 'imageSide', 'showTitle', 'showDescription', 'effectiveDate', 'eventDate', 'eventTime', 'eventLocation'],
+        fields: ['titleTag', 'imageSide', 'showTitle', 'showDescription','eventCard', 'eventDate', 'eventTime', 'eventLocation', 'effectiveDate'],
       },
     ],
     properties: {
@@ -107,7 +107,10 @@ export const advancedCarouselSchema = (props) => {
         title: intl.formatMessage(messages.eventLocation),
         type: 'boolean',
       },
-
+      eventCard: {
+        title: 'Show Event Card',
+        type: 'boolean',
+      },
     },
   };
 };

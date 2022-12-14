@@ -90,11 +90,11 @@
   margin-top: 0 !important;
 }
 
-.advancedCarousel {
+.advancedView {
   max-width: 100vw !important;
 }
 
-.advancedCarousel {
+.advancedView {
   width: calc(100% + 1em);
   margin-left: -0.5em
 }
@@ -107,56 +107,60 @@
   padding: 2px 1px 0 1px;
 }
 
-.advancedCarousel.has--stretch--stretch {
+.advancedView.has--stretch--stretch {
   margin-left: 0;
 }
 
-.advancedCarousel.has--stretch--stretch {
+.advancedView.has--stretch--stretch {
   margin-left: 0;
 }
 
-.advancedCarousel.has--stretch--stretch .slick-slide {
+.advancedView.has--stretch--stretch .slick-slide {
   padding: 0;
 }
+.advancedView.has--stretch--stretch .slick-slide {
+  padding: 0;
+}
+.advancedList .top.aligned.twelve.wide.column {padding:0 1em}
 
 /*@media screen and (min-width: 767px) and (max-width: 1790px) {*/
-/*  body:not(.view-editview):not(.view-addview):not(.document_wide_view):not(.is-anonymous):not(.has-toolbar-collapsed) .stretch .advancedCarousel {*/
+/*  body:not(.view-editview):not(.view-addview):not(.document_wide_view):not(.is-anonymous):not(.has-toolbar-collapsed) .stretch .advancedView {*/
 /*    margin: 0 0 0 186px;*/
 /*    width: calc(100% - 80px);*/
 /*  }*/
 
-/*  body:not(.view-editview):not(.view-addview):not(.document_wide_view):not(.is-anonymous):not(.has-toolbar) .stretch .advancedCarousel {*/
+/*  body:not(.view-editview):not(.view-addview):not(.document_wide_view):not(.is-anonymous):not(.has-toolbar) .stretch .advancedView {*/
 /*    margin: 0 0 0 166px;*/
 /*    width: calc(100% - 20px);*/
 
 /*  }*/
 /*}*/
 @media only screen and (max-width: 1222px) {
-  .view-editview .advancedCarousel {
+  .view-editview .advancedView {
     max-width: calc(100vw - 475px) !important;
   }
 }
 
 @media only screen and (min-width: 1223px) and (max-width: 1446px) {
-  .view-editview .advancedCarousel {
+  .view-editview .advancedView {
     max-width: 730px !important;
   }
 }
 
 @media only screen and (min-width: 1447px) and (max-width: 1654px) {
-  .view-editview .advancedCarousel {
+  .view-editview .advancedView {
     max-width: 940px !important;
   }
 }
 
 @media only screen and (min-width: 1655px) {
-  .view-editview .advancedCarousel {
+  .view-editview .advancedView {
     max-width: 1134px !important;
   }
 }
 
 @media screen and (max-width: 766px) {
-  .view-editview .advancedCarousel {
+  .view-editview .advancedView {
     max-width: calc(100vw - 28px) !important;
   }
 
@@ -185,63 +189,65 @@
 
 
 @media (max-width: 766px) {
-  .advancedCarousel .slick-prev {
+  .advancedView .slick-prev {
     z-index: 2;
     transform: translateX(0);
     opacity: 0
   }
 
-  .advancedCarousel:hover .slick-prev {
+  .advancedView:hover .slick-prev {
     transform: translateX(42px);
     opacity: 1;
     transition: 1s;
   }
 
-  .advancedCarousel .slick-next {
+  .advancedView .slick-next {
     z-index: 2;
     transform: translateX(0);
     opacity: 0
   }
 
-  .advancedCarousel:hover .slick-next {
+  .advancedView:hover .slick-next {
     transform: translateX(-42px);
     opacity: 1;
     transition: 1s;
   }
 }
 
-.advancedCarousel .column1 .slick-prev {
+.advancedView .column1 .slick-prev {
   z-index: 2;
   transform: translateX(0);
   opacity: 0
 }
 
-.advancedCarousel:hover .column1 .slick-prev {
+.advancedView:hover .column1 .slick-prev {
   transform: translateX(42px);
   opacity: 1;
   transition: 1s;
 }
 
-.advancedCarousel .column1 .slick-next {
+.advancedView .column1 .slick-next {
   z-index: 2;
   transform: translateX(0);
   opacity: 0
 }
 
-.advancedCarousel:hover .column1 .slick-next {
+.advancedView:hover .column1 .slick-next {
   transform: translateX(-42px);
   opacity: 1;
   transition: 1s;
 }
-.advancedCarousel .column1 .backgroundimage:hover {
+.advancedView .column1 .backgroundimage:hover {
     box-shadow: 0 0 0;
 }
-.advancedCarousel .ui.one.column.grid {
+.advancedView .ui.one.column.grid {
     padding: 0;
     margin: 0;
 }
-
-.advancedCarousel .twelve.wide.column.advanced-item {
+.advancedView.advancedList{
+  padding-left: 7px;
+}
+.advancedView .twelve.wide.column.advanced-item {
     padding: 0;
     margin: 0;}
 .slick-dots {
@@ -267,3 +273,41 @@
 .event-when {font-weight: bold;}
 /* end listing */
 
+
+/* start eventCard */
+.cal_date {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 25%), inset 0 -1px 0 rgb(0 0 0 / 10%);
+    overflow: hidden;
+    font-size: 0.8em;
+    float: left;
+    vertical-align: top;
+    text-align: center;
+    background-color: white;
+    border-radius: 0.5em;
+    min-width: 4.4em;
+    margin: 0 1em 0.5em 0 !important;
+}
+.cal_month {
+    background: #b11116;
+    padding: 0 0.5em;
+    color: #fff;
+    font-size: 1.1em;
+    line-height: 1.3em;
+    display: block;
+}
+.cal_day {
+    font-size: 2em;
+    display: block;
+    padding-top: 0.3em;
+}
+.cal_wkday {
+    display: block;
+    font-size: 1em;
+    font-weight: normal;
+    padding-bottom: 0.3em;
+    min-width: 7em;
+}
+.info-text .cal_wkday, .info-text .cal_day {
+    color: #000000;
+}
+/* end eventCard */
