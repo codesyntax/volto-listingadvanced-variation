@@ -17,12 +17,12 @@ export const advancedCarouselSchema = (props) => {
       {
         id: 'carousel',
         title: 'Carousel/Slider Options',
-        fields: ['howManyColumns', 'slidesToScroll', 'autoPlay', 'autoplaySpeed'],
+        fields: ['howManyColumns', 'slidesToScroll', 'autoPlay', 'autoplaySpeed', 'align'],
       },
       {
         id: 'carouselDisplay',
         title: intl.formatMessage(messages.itemDisplayOptions),
-        fields: ['titleTag', 'imageSide', 'showTitle', 'showDescription','eventCard', 'eventDate', 'eventTime', 'eventLocation', 'effectiveDate'],
+        fields: ['titleTag', 'imageSide', 'showTitle', 'showDescription', 'eventCard', 'eventDate', 'eventTime', 'eventLocation', 'effectiveDate'],
       },
     ],
     properties: {
@@ -52,11 +52,6 @@ export const advancedCarouselSchema = (props) => {
         ],
         default: 1,
       },
-      autoPlay: {
-        title: "Autoplay",
-        type: 'boolean',
-        default: true
-      },
       autoplaySpeed: {
         title: 'Speed Autoplay',
         type: 'number',
@@ -71,6 +66,11 @@ export const advancedCarouselSchema = (props) => {
           [10, '10'],
         ],
         default: 5000
+      },
+      align: {
+        title: 'Alignment',
+        widget: 'align',
+        default: 'left',
       },
       imageSide: {
         title: intl.formatMessage(messages.imagePosition),
