@@ -1,14 +1,22 @@
 import AdvancedListingBlockTemplate from './AdvancedListingBlockTemplate';
-import { advancedSchema } from './advancedSchema';
+import AdvancedCarouselBlockTemplate from './AdvancedCarouselBlockTemplate';
+import {advancedListingSchema} from './AdvancedListingSchema';
+import {advancedCarouselSchema} from './AdvancedCarouselSchema';
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.listing.variations = [
     ...config.blocks.blocksConfig.listing.variations,
     {
       id: 'advanced',
-      title: 'Advanced',
+      title: 'Advanced Listing',
       template: AdvancedListingBlockTemplate,
-      schemaEnhancer: advancedSchema,
+      schemaEnhancer: advancedListingSchema,
+    },
+    {
+      id: 'advancedCarousel',
+      title: 'Advanced Carousel',
+      template: AdvancedCarouselBlockTemplate,
+      schemaEnhancer: advancedCarouselSchema,
     },
   ];
   return config;

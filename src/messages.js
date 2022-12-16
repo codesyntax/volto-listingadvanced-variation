@@ -1,4 +1,5 @@
-import { defineMessages } from 'react-intl';
+import {defineMessages} from 'react-intl';
+
 const messages = defineMessages({
   querystring: {
     id: 'Query',
@@ -11,10 +12,6 @@ const messages = defineMessages({
   header: {
     id: 'Header text',
     defaultMessage: 'Header text',
-  },
-  headerDescription: {
-    id: 'Header description',
-    defaultMessage: 'Block header text',
   },
   headerUrl: {
     id: 'Header url',
@@ -37,24 +34,24 @@ const messages = defineMessages({
     defaultMessage: 'Columns',
   },
   columnsCount: {
-    id: 'How many columns:',
-    defaultMessage: 'How many columns:',
+    id: 'Number of columns',
+    defaultMessage: 'Number of columns',
   },
   imageConfiguration: {
     id: 'Image position/size',
     defaultMessage: 'Image position/size',
   },
   imageWidth: {
-    id: 'Image width (x/12):',
-    defaultMessage: 'Image width (x/12):',
+    id: 'Image width',
+    defaultMessage: 'Image width',
   },
   imageWidthDescription: {
-    id: 'Default image width will be 2/12',
-    defaultMessage: 'Default image width will be 2/12',
+    id: 'Left/Right image width (default 2/12)',
+    defaultMessage: 'Left/Right image width (default 4/12)',
   },
   imagePosition: {
-    id: 'Image position:',
-    defaultMessage: 'Image position:',
+    id: 'Image position',
+    defaultMessage: 'Image position',
   },
   imagePositionDescription: {
     id: 'Default with no image',
@@ -65,8 +62,8 @@ const messages = defineMessages({
     defaultMessage: 'Title',
   },
   titleTag: {
-    id: 'Title text HTML tag',
-    defaultMessage: 'HTML tag',
+    id: 'titleTag',
+    defaultMessage: 'Title Level',
   },
   titleTagDescription: {
     id: 'Default HTML tag will be H3',
@@ -78,19 +75,11 @@ const messages = defineMessages({
   },
   descriptionTitle: {
     id: 'descriptionTitle',
-    defaultMessage: 'Show the description?',
+    defaultMessage: 'Description',
   },
   descriptionDescription: {
     id: 'descriptionDescription',
     defaultMessage: 'If selected, the description will be shown',
-  },
-  dateConfiguration: {
-    id: 'effectiveDate',
-    defaultMessage: 'Effective date',
-  },
-  date: {
-    id: 'effectiveDate',
-    defaultMessage: 'Effective date',
   },
   dateDescription: {
     id: 'Show effectiveDate',
@@ -115,6 +104,26 @@ const messages = defineMessages({
   moreLinkUrlDescription: {
     id: 'moreLinkUrlDescription',
     defaultMessage: 'Paste an external link or a plone object',
+  },
+  itemDisplayOptions: {
+    id: 'itemDisplayOptions',
+    defaultMessage: 'Item Display Options',
+  },
+  eventDate: {
+    id: 'eventDate',
+    defaultMessage: 'Show Event Date',
+  },
+  eventTime: {
+    id: 'eventTime',
+    defaultMessage: 'Show Event Time',
+  },
+  eventLocation: {
+    id: 'eventLocation',
+    defaultMessage: 'Show Event Location',
+  },
+  date: {
+    id: 'date',
+    defaultMessage: 'Show Effective Date',
   },
 });
 

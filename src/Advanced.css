@@ -1,0 +1,325 @@
+/* Start existing-content-backgroundimage */
+
+.backgroundimage {
+  background: #000;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.backgroundimage .info-text {
+  color: #fff;
+  width: 100%;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000 75%);
+  padding: 0 0.5em;
+  height: auto;
+}
+
+.backgroundimage .info-text h2,
+.backgroundimage .info-text h3,
+.backgroundimage .info-text h4 {
+  color: #fff;
+  text-shadow: 1px 1px 10px #000;
+  margin-bottom: 5px;
+}
+
+.card h2, .card h3, .card h4 {
+  margin-top: 0;
+}
+
+.backgroundimage .info-text p {
+  margin: 0em;
+}
+
+.backgroundimage .focuspoint img {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  z-index: 1
+}
+
+.backgroundimage:hover .info-text p {
+  height: 5em;
+  transition: 0.5s;
+}
+
+.backgroundimage a:hover .focuspoint {
+  filter: drop-shadow(2px 4px 6px black);
+  transition: 0.5s;
+}
+
+.backgroundimage .info-text p {
+  height: 0.2em;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.backgroundimage:hover .info-text p.date {
+  height: 1.5em;
+  transition: 0.5s;
+}
+
+.backgroundimage:hover {
+  box-shadow: 1px 6px 8px;
+  transition: 0.5s;
+}
+
+.backgroundimage .event-when {
+  background: #b11116;
+  padding: 0 0.5em;
+}
+.limited-text {
+  text-overflow:ellipsis;
+  overflow:hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+.text-ellipsis{
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+}
+/* End existing-content-backgroundimage */
+
+/* Start Slick */
+.slick-slide {
+  padding: 0 0.5em 0.5em 0.5em;
+}
+
+.backgroundimage h2, .backgroundimage h3, .backgroundimage h4 {
+  margin-top: 0 !important;
+}
+
+.top h2, .top h3, .top h4 {
+  margin-top: 0 !important;
+}
+
+.advancedView {
+  max-width: 100vw !important;
+}
+
+.advancedView {
+  width: calc(100% + 1em);
+  margin-left: -0.5em
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #000;
+  box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.75);
+  border-radius: 50%;
+  background: #2e3233;
+  padding: 2px 1px 0 1px;
+}
+
+.advancedView.has--stretch--stretch {
+  margin-left: 0;
+}
+
+.advancedView.has--stretch--stretch {
+  margin-left: 0;
+}
+
+.advancedView.has--stretch--stretch .slick-slide {
+  padding: 0;
+}
+.advancedView.has--stretch--stretch .slick-slide {
+  padding: 0;
+}
+.advancedList .top.aligned.twelve.wide.column {padding:0 1em}
+
+/*@media screen and (min-width: 767px) and (max-width: 1790px) {*/
+/*  body:not(.view-editview):not(.view-addview):not(.document_wide_view):not(.is-anonymous):not(.has-toolbar-collapsed) .stretch .advancedView {*/
+/*    margin: 0 0 0 186px;*/
+/*    width: calc(100% - 80px);*/
+/*  }*/
+
+/*  body:not(.view-editview):not(.view-addview):not(.document_wide_view):not(.is-anonymous):not(.has-toolbar) .stretch .advancedView {*/
+/*    margin: 0 0 0 166px;*/
+/*    width: calc(100% - 20px);*/
+
+/*  }*/
+/*}*/
+@media only screen and (max-width: 1222px) {
+  .view-editview .advancedView {
+    max-width: calc(100vw - 475px) !important;
+  }
+}
+
+@media only screen and (min-width: 1223px) and (max-width: 1446px) {
+  .view-editview .advancedView {
+    max-width: 730px !important;
+  }
+}
+
+@media only screen and (min-width: 1447px) and (max-width: 1654px) {
+  .view-editview .advancedView {
+    max-width: 940px !important;
+  }
+}
+
+@media only screen and (min-width: 1655px) {
+  .view-editview .advancedView {
+    max-width: 1134px !important;
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .view-editview .advancedView {
+    max-width: calc(100vw - 28px) !important;
+  }
+
+  .styled-listing.has--stretch--stretch.styled.stretch {
+    left: calc(50% - 50vw) !important;
+    width: 100vw !important;
+    margin: 0 !important
+  }
+}
+
+@media screen and (min-width: 767px) {
+  body:not(.view-editview):not(.view-addview):not(.document_wide_view):not(.is-anonymous):not(.has-toolbar-collapsed) .stretch {
+    max-width: 100vw !important;
+    width: calc(100vw - 80px) !important;
+    margin: 0 0 0 40px !important;
+    left: calc(50% - 50vw);
+  }
+
+  body:not(.view-editview):not(.view-addview):not(.document_wide_view):not(.is-anonymous):not(.has-toolbar) .stretch {
+    max-width: 100vw !important;
+    width: calc(100vw - 20px) !important;
+    margin: 0 0 0 10px !important;
+    left: calc(50% - 50vw);
+  }
+}
+
+
+@media (max-width: 766px) {
+  .advancedView .slick-prev {
+    z-index: 2;
+    transform: translateX(0);
+    opacity: 0
+  }
+
+  .advancedView:hover .slick-prev {
+    transform: translateX(42px);
+    opacity: 1;
+    transition: 1s;
+  }
+
+  .advancedView .slick-next {
+    z-index: 2;
+    transform: translateX(0);
+    opacity: 0
+  }
+
+  .advancedView:hover .slick-next {
+    transform: translateX(-42px);
+    opacity: 1;
+    transition: 1s;
+  }
+}
+
+.advancedView .column1 .slick-prev {
+  z-index: 2;
+  transform: translateX(0);
+  opacity: 0
+}
+
+.advancedView:hover .column1 .slick-prev {
+  transform: translateX(42px);
+  opacity: 1;
+  transition: 1s;
+}
+
+.advancedView .column1 .slick-next {
+  z-index: 2;
+  transform: translateX(0);
+  opacity: 0
+}
+
+.advancedView:hover .column1 .slick-next {
+  transform: translateX(-42px);
+  opacity: 1;
+  transition: 1s;
+}
+.advancedView .column1 .backgroundimage:hover {
+    box-shadow: 0 0 0;
+}
+.advancedView .ui.one.column.grid {
+    padding: 0;
+    margin: 0;
+}
+.advancedView.advancedList{
+  padding-left: 7px;
+}
+.advancedView .twelve.wide.column.advanced-item {
+    padding: 0;
+    margin: 0;}
+.slick-dots {
+    bottom: -1em !important;}
+/* End Slick */
+
+/* start listing */
+.ui.one.column.grid.advanced-item {
+  padding: 0;
+  margin: 0;
+}
+
+.ui.one.column.grid.advanced-item .column {
+  padding: 0.5em;
+  margin: 0;
+}
+.block.listing.advanced .ui.stackable.one.column.grid,
+.block.listing.advanced .ui.stackable.two.column.grid,
+.block.listing.advanced .ui.stackable.three.column.grid,
+.block.listing.advanced .ui.stackable.four.column.grid {
+  margin: 0 -0.5em 0 -0.5em
+}
+.event-when {font-weight: bold;}
+/* end listing */
+
+
+/* start eventCard */
+.cal_date {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 25%), inset 0 -1px 0 rgb(0 0 0 / 10%);
+    overflow: hidden;
+    font-size: 0.8em;
+    float: left;
+    vertical-align: top;
+    text-align: center;
+    background-color: white;
+    border-radius: 0.5em;
+    min-width: 4.4em;
+    margin: 0 1em 0.5em 0 !important;
+}
+.cal_month {
+    background: #b11116;
+    padding: 0 0.5em;
+    color: #fff;
+    font-size: 1.1em;
+    line-height: 1.3em;
+    display: block;
+}
+.cal_day {
+    font-size: 2em;
+    display: block;
+    padding-top: 0.3em;
+}
+.cal_wkday {
+    display: block;
+    font-size: 1em;
+    font-weight: normal;
+    padding-bottom: 0.3em;
+    min-width: 7em;
+}
+.info-text .cal_wkday, .info-text .cal_day {
+    color: #000000;
+}
+/* end eventCard */

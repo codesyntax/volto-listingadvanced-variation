@@ -4,11 +4,17 @@ Volto addon to add an additional variation to the default listing block with adv
 
 This add-on adds a fully customizable variation to the default listing block. It adds the following features:
 
+- Select the number of columns in which the content will be shown
 - Select to show the image of the item or not
 - Select the position of the image in the item card
 - Select the size of the card (to build mosaic-like listings)
+- An option to select to show the description
 - An option to select to show the publication date
-- Select the number of columns in which the content will be shown
+- An option to select to show the event date
+- An option to select to show the event time
+- An option to select to show the event location
+
+![volto-listingadvanced-variation block details](https://github.com/rnunez80/volto-listingadvanced-variation/blob/main/Screenshot%202022-10-24%20at%2012.28.49%20PM.png?raw=true)
 
 Installation:
 
