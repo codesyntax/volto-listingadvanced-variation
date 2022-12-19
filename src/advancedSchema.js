@@ -2,7 +2,7 @@ import messages from './messages';
 
 export const advancedSchema = (props) => {
   const { intl, schema, formData } = props;
-  const imageWidth = ['right', 'left'].includes(formData.imageSide)
+  const imageWidth = ['right', 'left'].includes(formData?.imageSide)
     ? ['imageWidth']
     : [];
   const headingChoices = [
@@ -10,24 +10,27 @@ export const advancedSchema = (props) => {
     ['h3', 'H3'],
     ['h4', 'H4'],
   ];
+  let heading =
+    formData && formData['@type'] === 'listing'
+      ? [
+          {
+            id: 'header',
+            title: intl.formatMessage(messages.headerConfiguration),
+            fields: ['header', 'headerUrl', 'headerTag'],
+          },
+        ]
+      : [];
+  const include_fieldsets = ['default', 'searchquery', 'facets', 'controls'];
+
   return {
     ...schema,
     fieldsets: [
-      {
-        id: 'default',
-        title: 'Default',
-        fields: ['variation'],
-      },
-      {
-        id: 'querystring',
-        title: intl.formatMessage(messages.querystring),
-        fields: ['querystring'],
-      },
-      {
-        id: 'header',
-        title: intl.formatMessage(messages.headerConfiguration),
-        fields: ['header', 'headerUrl', 'headerTag'],
-      },
+      ...(schema.fieldsets &&
+        schema.fieldsets.length > 0 &&
+        schema.fieldsets.filter((fieldset) =>
+          include_fieldsets.includes(fieldset.id),
+        )),
+      ...heading,
       {
         id: 'columns',
         title: intl.formatMessage(messages.columnsConfiguration),
