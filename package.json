@@ -1,6 +1,6 @@
 {
   "name": "@codesyntax/volto-listingadvanced-variation",
-  "version": "0.9.0",
+  "version": "0.11.0",
   "description": "volto-listingadvanced-variation: Volto add-on",
   "main": "src/index.js",
   "license": "MIT",
@@ -21,8 +21,8 @@
     "url": "git+ssh://git@github.com/codesyntax/volto-listingadvanced-variation.git"
   },
   "dependencies": {
-    "release-it": "^14.11.6",
-    "@plone/scripts": "*"
+    "@plone/scripts": "*",
+    "release-it": "^14.14.3"
   },
   "bugs": {
     "url": "https://github.com/codesyntax/volto-listingadvanced-variation/issues"
