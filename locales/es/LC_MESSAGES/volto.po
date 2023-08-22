@@ -1,152 +1,161 @@
+# Translation of volto.pot to Spanish
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
-"Content-Type: \n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"POT-Creation-Date: 2022-03-04T08:46:17.344Z\n"
+"PO-Revision-Date: 2023-08-22 13:10-0400\n"
+"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
+"Language-Team: ES <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Preferred-Encodings: utf-8\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
+"Domain: volto\n"
+"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: messages
 # defaultMessage: Columns
 msgid "Columns configuration"
-msgstr ""
+msgstr "Columnas"
 
 #: messages
 # defaultMessage: Default HTML tag will be H3
 msgid "Default HTML tag will be H3"
-msgstr ""
+msgstr "La etiqueta HTML por defecto será H3"
 
 #: messages
 # defaultMessage: Default image width will be 2/12
 msgid "Default image width will be 2/12"
-msgstr ""
+msgstr "El ancho de imagen predeterminado será 2/12"
 
 #: messages
 # defaultMessage: Default with no image
 msgid "Default with no image"
-msgstr ""
+msgstr "Predeterminado sin imagen"
 
 #: messages
 # defaultMessage: Header
 msgid "Header"
-msgstr ""
+msgstr "Encabezado"
 
 #: messages
 # defaultMessage: Header Tag
 msgid "Header Tag"
-msgstr ""
+msgstr "Etiqueta de encabezado"
 
 #: messages
 # defaultMessage: Default HTML tag will be H3
 msgid "Header Tag description"
-msgstr ""
+msgstr "La etiqueta HTML por defecto será H3"
 
 #: messages
 # defaultMessage: Block header text
 msgid "Header description"
-msgstr ""
+msgstr "Texto de encabezado del bloque"
 
 #: messages
 # defaultMessage: Header text
 msgid "Header text"
-msgstr ""
+msgstr "Texto de encabezado"
 
 #: messages
 # defaultMessage: Header url or object
 msgid "Header url"
-msgstr ""
+msgstr "URL de encabezado o objeto"
 
 #: messages
 # defaultMessage: Paste an external link or a plone object
 msgid "Header url description"
-msgstr ""
+msgstr "Pegar un enlace externo o un objeto Plone"
 
 #: messages
 # defaultMessage: How many columns:
 msgid "How many columns:"
-msgstr ""
+msgstr "Cuantas columnas:"
 
 #: messages
 # defaultMessage: Image position/size
 msgid "Image position/size"
-msgstr ""
+msgstr "Posición/tamaño de la imagen"
 
 #: messages
 # defaultMessage: Image position:
 msgid "Image position:"
-msgstr ""
+msgstr "Posición de la imagen:"
 
 #: messages
 # defaultMessage: Image width (x/12):
 msgid "Image width (x/12):"
-msgstr ""
+msgstr "Ancho de la imagen (x/12):"
 
 #: messages
 # defaultMessage: Query
 msgid "Query"
-msgstr ""
+msgstr "Consulta"
 
 #: messages
 # defaultMessage: Show effectiveDate
 msgid "Show effectiveDate"
-msgstr ""
+msgstr "Mostrar fecha efectiva"
 
 #: messages
 # defaultMessage: Title
 msgid "Title configuration"
-msgstr ""
+msgstr "Título"
 
 #: messages
 # defaultMessage: HTML tag
 msgid "Title text HTML tag"
-msgstr ""
+msgstr "Etiqueta HTML"
 
 #: messages
 # defaultMessage: Description
 msgid "description"
-msgstr ""
+msgstr "Descripción"
 
 #: messages
 # defaultMessage: If selected, the description will be shown
 msgid "descriptionDescription"
-msgstr ""
+msgstr "Si se selecciona, se mostrará la descripción"
 
 #: messages
 # defaultMessage: Show the description?
 msgid "descriptionTitle"
-msgstr ""
+msgstr "¿Mostrar la descripción?"
 
 #: messages
 # defaultMessage: Effective date
 msgid "effectiveDate"
-msgstr ""
+msgstr "Fecha efectiva"
 
 #: messages
 # defaultMessage: More link
 msgid "moreLinkConfiguration"
-msgstr ""
+msgstr "Enlace más"
 
 #: messages
 # defaultMessage: Text
 msgid "moreLinkText"
-msgstr ""
+msgstr "Texto"
 
 #: messages
 # defaultMessage: More link text
 msgid "moreLinkTextDescription"
-msgstr ""
+msgstr "Texto de enlace Más"
 
 #: messages
 # defaultMessage: More link url or object
 msgid "moreLinkUrl"
-msgstr ""
+msgstr "URL de enlace Más o objeto"
 
 #: messages
 # defaultMessage: Paste an external link or a plone object
 msgid "moreLinkUrlDescription"
-msgstr ""
+msgstr "Pegar un enlace externo o un objeto Plone"
