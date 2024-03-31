@@ -1,3 +1,9 @@
+## 0.13.0 (2024-03-31)
+
+### Internal
+
+- modernize setup @erral [#34](https://github.com/codesyntax/volto-listingadvanced-variation/pull/34)
+
 ### Changelog
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
